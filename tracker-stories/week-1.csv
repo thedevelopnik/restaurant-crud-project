@@ -1,0 +1,75 @@
+Id,Title,Labels,Iteration,Iteration Start,Iteration End,Type,Estimate,Current State,Created at,Accepted at,Deadline,Requested By,Description,URL,Owned By
+2338487,Routing,routing,,,,epic,,,"Feb 16, 2016",,,,,https://www.pivotaltracker.com/epic/show/2338487,
+2338485,HTML & CSS,html & css,,,,epic,,,"Feb 16, 2016",,,,,https://www.pivotaltracker.com/epic/show/2338485,
+113853733,"As a User, I want to see a Homepage which lists restaurants on gTables",html & css,,,,feature,,unscheduled,"Feb 16, 2016",,,Wes Reid,"See the `index.jpg` file inside of the mockups folder. For now, simply hardcode the restaurants. These will eventually be pulled from a database!
+
+__Acceptance Criteria:__
+* The page has a title in the navbar
+* A link to the New Page is in the navbar
+* Restaurants are listed in a three column format
+* Each restaurant needs a name, location, category (e.g. Italian), rating, and image.
+* The image and title should be clickable and should go the Show page",https://www.pivotaltracker.com/story/show/113853733,
+113854215,"As a User, I want to see a Show page which displays an individual restaurant",html & css,,,,feature,,unscheduled,"Feb 16, 2016",,,Wes Reid,"See the `showOne.jpg` (__not__ `show.jpg`) file inside of the mockups folder. For now, simply hardcode a single restaurant. This will eventually be dynamically loaded!
+
+__Acceptance Criteria:__
+* The title in the navbar should be the name of the restaurant
+* The user should click the header and go back to the homepage
+* An individual restaurant is shown in a two-column format; on the left side is the image and on the right side is information about the restaurant
+* Two buttons are show under the restaurant info: Edit and Delete
+* The Edit button should go the Edit page",https://www.pivotaltracker.com/story/show/113854215,
+113854881,"As a User, I want an Edit page where I can edit existing restaurants",html & css,,,,feature,,unscheduled,"Feb 16, 2016",,,Wes Reid,"See the `edit.jpg` file inside of the mockups folder. For now, you just need to put form fields.
+
+__Acceptance Criteria:__
+* The title in the navbar should be ""Edit"" + the name of the restaurant (this says ""New Restaurant"" in the mockup but is incorrect)
+* There should be text inputs for name, location (city), and image
+* There should be a dropdown select box for state and cuisine -- cuisines include American, Italian, Mexican, Thai, and Vietnamese. Each should __not__ default to a valid selection (i.e. For state, the initial state might be 
+* There should be a textarea for a description of the restaurant
+* Two buttons should be present: Submit and Cancel. Cancel should bring you back to the Show page and Submit should submit the form
+
+__Validations:__
+The following should be validated:
+* Name: required, shorter than 40 characters
+* Location (City): required, shorter than 40 characters
+* Location (State): required
+* Cuisine: required
+* Rating: required
+* Image: required, is a valid url
+* Description: required, must not be empty",https://www.pivotaltracker.com/story/show/113854881,
+113861401,"As a User, I want an New page where I can edit existing restaurants",html & css,,,,feature,,unscheduled,"Feb 16, 2016",,,Wes Reid,"See the `new.jpg` file inside of the mockups folder. For now, you just need to put form fields.
+
+__Acceptance Criteria:__
+* The title in the navbar should be ""New Restaurant""
+* There should be text inputs for name, location (city), and image
+* There should be a dropdown select box for state and cuisine -- cuisines include American, Italian, Mexican, Thai, and Vietnamese. Each should __not__ default to a valid selection (i.e. For state, the initial state might be 
+* There should be a textarea for a description of the restaurant
+* Two buttons should be present: Submit and Cancel. Cancel should bring you back to the Homepage and Submit should submit the form
+
+__Validations:__
+The following should be validated:
+* Name: required, shorter than 40 characters
+* Location (City): required, shorter than 40 characters
+* Location (State): required
+* Cuisine: required
+* Rating: required
+* Image: required, is a valid url
+* Description: required, must not be empty",https://www.pivotaltracker.com/story/show/113861401,
+113861751,"As a User, when I head to the root URL (i.e. '/') I should see the Homepage",routing,,,,feature,,unscheduled,"Feb 16, 2016",,,Wes Reid,"Set up a route so that when the user hits the root (e.g. http://localhost:3000/) they are redirected to the Homepage.
+
+__Acceptance Criteria:__
+* Going to '/' redirects you to the Homepage.",https://www.pivotaltracker.com/story/show/113861751,
+113861769,"As a User, when I head to '/restaurants/new' I should get the New page",routing,,,,feature,,unscheduled,"Feb 16, 2016",,,Wes Reid,"Set up a route so that when the user hits '/restaurants/new' (e.g. http://localhost:3000/restaurants/new) they are redirected to the New page.
+
+__Acceptance Criteria:__
+* Going to '/new' redirects you to the New page.",https://www.pivotaltracker.com/story/show/113861769,
+113862025,"As a User, when I head to '/restaurants' I should be redirected to the root url",routing,,,,feature,,unscheduled,"Feb 16, 2016",,,Wes Reid,"Set up a route so that when the user hits '/restaurants' (e.g. http://localhost:3000/restaurants), where there is NO id, they are redirected back to the Homepage.
+
+__Acceptance Criteria:__
+* Going to '/restaurants' sends you to the Homepage",https://www.pivotaltracker.com/story/show/113862025,
+113861841,"As a User, when I head to '/restaurants/:id' I should get the Show page",routing,,,,feature,,unscheduled,"Feb 16, 2016",,,Wes Reid,"Set up a route so that when the user hits '/restaurants/:id' (e.g. http://localhost:3000/restaurants/1), where :id is any number, they are redirected to the Show page. For now, just go to the static Show page.
+
+__Acceptance Criteria:__
+* Going to '/restaurants/:id' sends you to the Show page",https://www.pivotaltracker.com/story/show/113861841,
+113862483,"As a User, when I head to '/restaurants/:id/edit' I should get the Edit page",routing,,,,feature,,unscheduled,"Feb 16, 2016",,,Wes Reid,"Set up a route so that when the user hits '/restaurants/:id/edit' (e.g. http://localhost:3000/restaurants/1/edit), where :id is any number, they are redirected to the Edit page. For now, just go to the static Edit page.
+
+__Acceptance Criteria:__
+* Going to '/restaurants/:id/edit' sends you to the Edit page",https://www.pivotaltracker.com/story/show/113862483,
