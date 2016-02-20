@@ -1,25 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var restaurants = require('restaurants');
-
-
-var pages = {
-  '/': {
-
-  },
-
-
-};
+var pages = require('pages');
 
 //render home page if no params or if param is restaurants
 router.get('/:page?', function(req, res, next) {
   var page = req.params.page;
   if (!page || page === 'restaurants') {
-    res.render('index', { title: 'Express' });
+    res.render('index', pages['/']);
   }
 });
 
-router.get('/', function(req, res, next) {
+router.get('/restaurants/:page?', function(req, res, next) {
+  var page = req.params.page;
   res.render('index', { title: 'Express' });
 });
 
