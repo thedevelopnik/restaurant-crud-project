@@ -46,7 +46,9 @@ function renderShow() {
 }
 
 // render restaurant edit page of identified restaurant OR
-// render restaurant new page if new
+// render restaurant new page if new is called OR
+// render Show page of identified restaurant OR
+// render home page if no params are passed or restaurant is the first param
 function renderPages () {
   router.get('/:p1?/:p2?/:p3?', function(req, res, next) {
     var p1 = req.params.p1;
