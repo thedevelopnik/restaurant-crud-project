@@ -11,7 +11,8 @@ router.get('/:page?', function(req, res, next) {
   }
 });
 
-router.get('/restaurants/:page?', function(req, res, next) {
+//render restaurant show page if id matches a restaurant's id
+router.get('/restaurants/:id?', function(req, res, next) {
   var page = req.params.page;
   res.render('index', { title: 'Express' });
 });

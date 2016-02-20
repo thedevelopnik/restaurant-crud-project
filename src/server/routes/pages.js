@@ -1,3 +1,5 @@
+var restaurants = require('restaurants');
+
 var pages = {
   '/': {
 
