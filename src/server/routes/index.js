@@ -33,7 +33,13 @@ function renderNew() {
 function renderShow() {
   router.get('/restaurants/:id/edit', function(req, res, next) {
     var restId = req.params.id;
-    res.render('show', restaurants[restId]);
+    for (var i = 0; i < restaurants.length; i++ ) {
+      if (restId === restaurants[i]) {
+        res.render('show', restaurants[restId]);
+      } else {
+        res.render('error');
+      }
+    }
   });
 }
 
