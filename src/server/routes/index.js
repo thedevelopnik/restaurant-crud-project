@@ -48,29 +48,22 @@ function renderShow() {
 // render restaurant edit page of identified restaurant OR
 // render restaurant new page if new
 function renderPages () {
-  router.get('/restaurants/:id?/:edit?', function(req, res, next) {
-    var restId = req.params.id;
-    var command = req.params.command;
-    if (!!command && command === 'edit') {
-      res.render('edit', restaurants[restId]);
-    } else if (!!command && command === 'new') {
+  router.get('/:p1?/:p2?/:p3?', function(req, res, next) {
+    var p1 = req.params.p1;
+    var p2 = req.params.p2;
+    var p3 = req.params.p3;
+    if (p1 === 'restaurants' && p2 && p3 === 'edit') {
+      renderEdit();
+    } else if (p1 === 'restaurants' && p2 === 'new') {
       res.render('new');
-    } else if (!command && !!id) {
-      res.render('show', restaurants[restId]);
-    } else if (!command && !id) {
-      callback();
+    } else if (p1 && p2 && p2 !== 'new') {
+      renderShow();
+    } else if (!p1 || p1 === 'restaurants') {
+      renderHome();
     }
   });
 }
 
 renderPages();
-
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 
 module.exports = router;
