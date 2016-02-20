@@ -3,12 +3,14 @@ var router = express.Router();
 var restaurants = require('restaurants');
 var pages = require('pages');
 
+
 //render home page if no params or if param is restaurants
 function renderHome() {
   router.get('/:page?', function(req, res, next) {
     res.render('index', pages['/']);
   });
 }
+
 
 // render edit page if edit is called and there is a matching id
 function renderEdit() {
@@ -24,12 +26,14 @@ function renderEdit() {
   });
 }
 
+
 // render New page if it is called
 function renderNew() {
   router.get('/restaurants/new', function(req, res, next) {
     res.render('new');
   });
 }
+
 
 // render show page for specific restaurant when it is called
 function renderShow() {
@@ -44,6 +48,7 @@ function renderShow() {
     }
   });
 }
+
 
 // render restaurant edit page of identified restaurant OR
 // render restaurant new page if new is called OR
