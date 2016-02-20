@@ -24,14 +24,16 @@ function renderEdit() {
   });
 }
 
+// render New page if it is called
 function renderNew() {
   router.get('/restaurants/new', function(req, res, next) {
     res.render('new');
   });
 }
 
+// render show page for specific restaurant when it is called
 function renderShow() {
-  router.get('/restaurants/:id/edit', function(req, res, next) {
+  router.get('/restaurants/:id', function(req, res, next) {
     var restId = req.params.id;
     for (var i = 0; i < restaurants.length; i++ ) {
       if (restId === restaurants[i]) {
