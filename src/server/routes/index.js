@@ -5,32 +5,38 @@ var restaurants = {
   1: {
     name: 'Los Tacos',
     cuisine: 'Mexican Cuisine',
-    loc: 'Denver, CO'
+    loc: 'Denver, CO',
+    rating: 5
   },
   2: {
     name: 'Burger Bar',
     cuisine: 'American Cuisine',
-    loc: 'Seattle, WA'
+    loc: 'Seattle, WA',
+    rating: 5
   },
   3: {
     name: 'Pasta Freddy\'s',
     cuisine: 'Italian Cuisine',
-    loc: 'Sacramento, CA'
+    loc: 'Sacramento, CA',
+    rating: 3
   },
   4: {
     name: 'Bangkok Grill',
     cuisine: 'Thai Cuisine',
-    loc: 'Brooklyn, NY'
+    loc: 'Brooklyn, NY',
+    rating: 2
   },
   5: {
     name: 'Pho Mazing',
     cuisine: 'Vietnamese Cuisine',
-    loc: 'Boulder, CO'
+    loc: 'Boulder, CO',
+    rating: 2
   },
   6: {
     name: 'Fiestaritos',
     cuisine: 'Mexican Cuisine',
-    loc: 'Lincoln, NE'
+    loc: 'Lincoln, NE',
+    rating: 1
   }
 };
 
