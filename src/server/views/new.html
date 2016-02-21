@@ -7,8 +7,90 @@
 
   <div class="container">
 
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    <div class='row'>
+      <header class='col-md-12'>
+        <h1>Editing {{ name }}</h1>
+        <a href='{{ homeLink }}'>{{ hlText }}</a>
+      </header>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-1'>
+      </div>
+
+      <div class='col-md-10'>
+        <form>
+          <label for='name'></label>
+          <input type='text' name='name' value='{{ name }}' />
+
+          <label for='city'>Location</label>
+          <input type='text' name='city' value='{{ city }}' />
+          <select name='states'>
+            <option value='CA'>
+              CA
+            </option>
+            <option value='CO'>
+              CO
+            </option>
+            <option value='NE'>
+              NE
+            </option>
+            <option value='NY'>
+              NY
+            </option>
+            <option value='WA'>
+              WA
+            </option>
+          </select>
+
+          <label for='cuisine'></label>
+          <select name='cuisine'>
+            <option value='American Cuisine'>
+              American
+            </option>
+            <option value='Italian Cuisine'>
+              Italian
+            </option>
+            <option value='Mexican Cuisine'>
+              Mexican
+            </option>
+            <option value='Thai Cuisine'>
+              Thai
+            </option>
+            <option value='Vietnamese Cuisine'>
+              Vietnamese
+            </option>
+          </select>
+
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4"> 4
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5"> 5
+          </label>
+
+          <label for='image'>Image</label>
+          <input type='text' value='{{ image }}' />
+
+          <textarea name='description' rows='10' cols='30'>
+            {{ desc }}
+          </textarea>
+
+        </form>
+      </div>
+
+      <div class='col-md-1'>
+      </div>
+    </div>
 
   </div>
 
