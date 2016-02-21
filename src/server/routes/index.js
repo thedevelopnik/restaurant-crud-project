@@ -89,8 +89,8 @@ var restaurantNames = Object.keys(restaurants);
 
 
 //render home page if no params or if param is restaurants
-function renderHome() {
-  router.get('/:page?', function(req, res, next) {
+function renderHome(par1) {
+  router.param('/:page?', function(req, res, next) {
     var page = req.params.page;
     if (!page || page === 'restaurants') {
       res.render('index', pages['/']);
@@ -101,7 +101,8 @@ function renderHome() {
 
 // render edit page if edit is called and there is a matching id
 function renderEdit() {
-  router.get('/restaurants/:id/edit', function(req, res, next) {
+  console.log('renderEdit has fired');
+  router.get('/restaurant/:id/edit', function(req, res, next) {
     var restId = req.params.id;
     var thisRestaurant;
     for (var i = 0; i < restaurantNames.length; i++ ) {
@@ -127,7 +128,7 @@ function renderNew() {
 
 
 // render show page for specific restaurant when it is called
-function renderShow() {
+function renderShow(par1, par2, par3) {
   router.get('/restaurants/:id', function(req, res, next) {
     var restId = req.params.id;
     var thisRestaurant;
@@ -155,18 +156,38 @@ function renderPages () {
     var p1 = req.params.p1;
     var p2 = req.params.p2;
     var p3 = req.params.p3;
+    var thisRestaurant;
     if (p1 === 'restaurants' && p2 && p3 === 'edit') {
-      renderEdit();
+      for (i = 0; i < restaurantNames.length; i++ ) {
+        if (p2 === restaurantNames[i]) {
+          thisRestaurant = restaurantNames[i];
+        }
+      }
+      if (thisRestaurant) {
+        res.render('edit',  restaurants[thisRestaurant]);
+      } else {
+        res.render('error');
+      }
     } else if (p1 === 'restaurants' && p2 === 'new') {
-      res.render('new');
+      res.render('new', pages['new']);
     } else if (p1 && p2 && p2 !== 'new') {
-      renderShow();
+      for (i = 0; i < restaurantNames.length; i++ ) {
+        if (p2 === restaurantNames[i]) {
+          thisRestaurant = restaurantNames[i];
+        }
+      }
+      if (thisRestaurant) {
+        res.render('show', restaurants[thisRestaurant]);
+      }
+      else {
+        res.render('error');
+      }
     } else if (!p1 || p1 === 'restaurants') {
-      renderHome();
+      res.render('index', pages['/']);
     }
   });
 }
 
-renderEdit();
+renderPages();
 
 module.exports = router;
