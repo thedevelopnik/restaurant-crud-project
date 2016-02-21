@@ -5,11 +5,37 @@
 
 {% block content %}
 
-  <div class="container">
+  <div class="container-fluid">
 
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    <div class='row'>
+      <header class='col-md-12'>
+        <h1>{{ name }}</h1>
+        <a href='{{ link }}'>{{ linkText }}</a>
+      </header>
+    </div>
 
+    <div class='row'>
+      <section class='col-md-6'>
+        <img src='{{ image }}' />
+      </section>
+      <section class='col-md-6'>
+        <p>
+          {{ cuisine }}
+        </p>
+        <p>
+          Located in {{ loc }}
+        </p>
+        <p>
+          {{ desc }}
+        </p>
+        <p>
+          Rating: {{ rating }}
+        </p>
+        <button class='success'>Edit</button>
+        <button class='danger'>Delete</button>
+      </section>
+    </div>
+    
   </div>
 
 {% endblock %}
