@@ -21,10 +21,10 @@
       <div class='col-md-10'>
         <form>
           <label for='name'></label>
-          <input type='text' name='name' value='{{ name }}' />
+          <input type='text' name='name' placeholder='Restaurant Name' />
 
           <label for='city'>Location</label>
-          <input type='text' name='city' value='{{ city }}' />
+          <input type='text' name='city' placeholder='city' />
           <select name='states'>
             <option value='CA'>
               CA
@@ -79,10 +79,9 @@
           </label>
 
           <label for='image'>Image</label>
-          <input type='text' value='{{ image }}' />
+          <input type='text' placeholder='enter a url' />
 
-          <textarea name='description' rows='10' cols='30'>
-            {{ desc }}
+          <textarea name='description' placeholder='Enter a description of the restaurant.' rows='10' cols='30'>
           </textarea>
 
         </form>
