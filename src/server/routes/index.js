@@ -30,7 +30,7 @@ function renderEdit() {
 // render New page if it is called
 function renderNew() {
   router.get('/restaurants/new', function(req, res, next) {
-    res.render('new');
+    res.render('new', pages['new']);
   });
 }
 
