@@ -1,19 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
-var pages = {
-  '/': {
-    title: 'gTables',
-    name: 'gTables',
-    link: '/restaurants/new',
-    linkText: 'New Restaurant'
-  },
-  'new': {
-    title: 'New Restaurant',
-    name: 'New Restaurant',
-    link: '/restauran'
-  }
-};
+var pages = require('pages');
 
 var restaurants = {
 'los-tacos':

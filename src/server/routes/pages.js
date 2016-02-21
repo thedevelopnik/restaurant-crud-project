@@ -1,12 +1,15 @@
-var restaurants = require('restaurants');
-
 var pages = {
   '/': {
     title: 'gTables',
     name: 'gTables',
     link: '/restaurants/new',
-    linkText: 'Home'
+    linkText: 'New Restaurant'
   },
+  'new': {
+    title: 'New Restaurant',
+    name: 'New Restaurant',
+    link: '/'
+  }
 };
 
 module.exports = pages;
