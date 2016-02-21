@@ -5,10 +5,109 @@
 
 {% block content %}
 
-  <div class="container">
+  <div class='container-fluid'>
 
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    <div class='row'>
+      <header class='col-md-12'>
+        <h1>{{ name }}</h1>
+        <a href='{{ link }}'>{{ linkText }}</a>
+      </header>
+    </div>
+
+    <main>
+      <div class='row'>
+        <section class='col-md-12 flex-container'>
+          <div id='r1'>
+            <h2>{{ restName }}</h2>
+            <img src='{{ image }}' />
+            <p>
+              {{ cuisine }}
+            </p>
+            <p>
+              {{ loc }}
+            </p>
+            <p>
+              {{ rating }}
+            </p>
+          </div>
+
+          <div id='r2'>
+            <h2>{{ restName }}</h2>
+            <img src='{{ image }}' />
+            <p>
+              {{ cuisine }}
+            </p>
+            <p>
+              {{ loc }}
+            </p>
+            <p>
+              {{ rating }}
+            </p>
+          </div>
+
+          <div id='r3'>
+            <h2>{{ restName }}</h2>
+            <img src='{{ image }}' />
+            <p>
+              {{ cuisine }}
+            </p>
+            <p>
+              {{ loc }}
+            </p>
+            <p>
+              {{ rating }}
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div class='row'>
+        <section class='col-md-12 flex-container'>
+          <div id='r4'>
+            <h2>{{ restName }}</h2>
+            <img src='{{ image }}' />
+            <p>
+              {{ cuisine }}
+            </p>
+            <p>
+              {{ loc }}
+            </p>
+            <p>
+              {{ rating }}
+            </p>
+          </div>
+
+          <div id='r5'>
+            <h2>{{ restName }}</h2>
+            <img src='{{ image }}' />
+            <p>
+              {{ cuisine }}
+            </p>
+            <p>
+              {{ loc }}
+            </p>
+            <p>
+              {{ rating }}
+            </p>
+          </div>
+
+          <div id='r6'>
+            <h2>{{ restName }}</h2>
+            <img src='{{ image }}' />
+            <p>
+              {{ cuisine }}
+            </p>
+            <p>
+              {{ loc }}
+            </p>
+            <p>
+              {{ rating }}
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
 
   </div>
 
