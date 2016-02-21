@@ -5,7 +5,7 @@ var pages = {
     title: 'gTables',
     name: 'gTables',
     link: '/restaurants/new',
-    linkText: 'New Restaurant'
+    linkText: 'Home'
   },
 };
 

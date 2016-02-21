@@ -1,7 +1,96 @@
 var express = require('express');
 var router = express.Router();
-var restaurants = require('restaurants');
-var pages = require('pages');
+
+var pages = {
+  '/': {
+    title: 'gTables',
+    name: 'gTables',
+    link: '/restaurants/new',
+    linkText: 'New Restaurant'
+  },
+  'new': {
+    title: 'New Restaurant',
+    name: 'New Restaurant',
+    link: '/',
+    linkText: 'Home'
+  }
+};
+
+var restaurants = [
+  {'los-tacos':
+    {
+      name: 'Los Tacos',
+      cuisine: 'Mexican Cuisine',
+      city: 'Denver',
+      state: 'CO',
+      rating: 5,
+      image: '/images/mexican.png',
+      homeLink: "/",
+      hlText: 'Home',
+      desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
+    },
+  },
+  {'burger-bar': {
+      name: 'Burger Bar',
+      cuisine: 'American Cuisine',
+      city: 'Seattle',
+      state: 'WA',
+      rating: 5,
+      image: '/images/burger.png',
+      homeLink: "/",
+      hlText: 'Home',
+      desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
+    },
+  },
+  {'pasta-freddys': {
+      name: 'Pasta Freddy\'s',
+      cuisine: 'Italian Cuisine',
+      city: 'Sacramento',
+      state: 'CA',
+      rating: 3,
+      image: '/images/italian.png',
+      homeLink: "/",
+      hlText: 'Home',
+      desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
+    },
+  },
+  {'bangkok-grill': {
+      name: 'Bangkok Grill',
+      cuisine: 'Thai Cuisine',
+      city: 'Brooklyn',
+      state: 'NY',
+      rating: 2,
+      image: '/images/thai.jpg',
+      homeLink: "/",
+      hlText: 'Home',
+      desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
+    },
+  },
+  {'pho-mazing': {
+      name: 'Pho Mazing',
+      cuisine: 'Vietnamese Cuisine',
+      city: 'Boulder',
+      state: 'CO',
+      rating: 2,
+      image: '/images/pho.jpg',
+      homeLink: "/",
+      hlText: 'Home',
+      desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
+    },
+  },
+  {'fiestaritos': {
+      name: 'Fiestaritos',
+      cuisine: 'Mexican Cuisine',
+      city: 'Lincoln',
+      state: 'NE',
+      rating: 1,
+      image: '/images/mexican.png',
+      homeLink: "/",
+      hlText: 'Home',
+      desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
+    }
+  }
+];
 
 
 //render home page if no params or if param is restaurants
@@ -62,7 +151,7 @@ function renderPages () {
     if (p1 === 'restaurants' && p2 && p3 === 'edit') {
       renderEdit();
     } else if (p1 === 'restaurants' && p2 === 'new') {
-      res.render('new');
+      res.render('new', pages['new']);
     } else if (p1 && p2 && p2 !== 'new') {
       renderShow();
     } else if (!p1 || p1 === 'restaurants') {
