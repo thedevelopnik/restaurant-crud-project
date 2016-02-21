@@ -113,6 +113,7 @@ function renderEdit() {
         restaurant = restaurants[i];
       }
     }
+    console.log(restaurant);
     if (restaurant) {
       res.render('edit',  restaurant);
     } else {
@@ -171,6 +172,6 @@ function renderPages () {
   });
 }
 
-renderShow();
+renderHome();
 
 module.exports = router;
