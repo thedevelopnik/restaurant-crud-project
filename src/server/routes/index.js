@@ -95,7 +95,10 @@ var restaurants = [
 //render home page if no params or if param is restaurants
 function renderHome() {
   router.get('/:page?', function(req, res, next) {
-    res.render('index', pages['/']);
+    var page = req.params.page;
+    if (!page || page === 'restaurants') {
+      res.render('index', pages['/']);
+    }
   });
 }
 
@@ -136,12 +139,12 @@ function renderShow() {
       if (restId === restaurants[i]) {
         restaurant = restaurants[i];
       }
-      if (restaurant) {
-        res.render('show', restaurant);
-      }
-      else {
-        res.render('error');
-      }
+    }
+    if (restaurant) {
+      res.render('show', restaurant);
+    }
+    else {
+      res.render('error');
     }
   });
 }
@@ -168,6 +171,6 @@ function renderPages () {
   });
 }
 
-renderHome();
+renderShow();
 
 module.exports = router;
