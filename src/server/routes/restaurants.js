@@ -6,7 +6,7 @@ var restaurants = [
       city: 'Denver',
       state: 'CO',
       rating: 5,
-      image: '/images/mexican.png',
+      image: '/src/client/images/mexican.png',
       homeLink: "/",
       hlText: 'Home',
       desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
@@ -18,7 +18,7 @@ var restaurants = [
       city: 'Seattle',
       state: 'WA',
       rating: 5,
-      image: '/images/burger.png',
+      image: '/src/client/images/burger.png',
       homeLink: "/",
       hlText: 'Home',
       desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
@@ -30,7 +30,7 @@ var restaurants = [
       city: 'Sacramento',
       state: 'CA',
       rating: 3,
-      image: '/images/italian.png',
+      image: '/src/client/images/italian.png',
       homeLink: "/",
       hlText: 'Home',
       desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
@@ -42,7 +42,7 @@ var restaurants = [
       city: 'Brooklyn',
       state: 'NY',
       rating: 2,
-      image: '/images/thai.jpg',
+      image: '/src/client/images/thai.jpg',
       homeLink: "/",
       hlText: 'Home',
       desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
@@ -54,7 +54,7 @@ var restaurants = [
       city: 'Boulder',
       state: 'CO',
       rating: 2,
-      image: '/images/pho.jpg',
+      image: '/src/client/images/pho.jpg',
       homeLink: "/",
       hlText: 'Home',
       desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
@@ -66,7 +66,7 @@ var restaurants = [
       city: 'Lincoln',
       state: 'NE',
       rating: 1,
-      image: '/images/mexican.png',
+      image: '/src/client/images/mexican.png',
       homeLink: "/",
       hlText: 'Home',
       desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'

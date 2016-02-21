@@ -104,12 +104,16 @@ function renderHome() {
 function renderEdit() {
   router.get('/restaurants/:id/edit', function(req, res, next) {
     var restId = req.params.id;
+    var restaurant;
     for (var i = 0; i < restaurants.length; i++ ) {
       if (restId === restaurants[i]) {
-        res.render('edit', restaurants[restId]);
-      } else {
-        res.render('error');
+        restaurant = restaurants[i];
       }
+    }
+    if (restaurant) {
+      res.render('edit',  restaurant);
+    } else {
+      res.render('error');
     }
   });
 }
@@ -127,10 +131,15 @@ function renderNew() {
 function renderShow() {
   router.get('/restaurants/:id', function(req, res, next) {
     var restId = req.params.id;
+    var restaurant;
     for (var i = 0; i < restaurants.length; i++ ) {
       if (restId === restaurants[i]) {
-        res.render('show', restaurants[restId]);
-      } else {
+        restaurant = restaurants[i];
+      }
+      if (restaurant) {
+        res.render('show', restaurant);
+      }
+      else {
         res.render('error');
       }
     }
@@ -159,6 +168,6 @@ function renderPages () {
   });
 }
 
-renderPages();
+renderHome();
 
 module.exports = router;
