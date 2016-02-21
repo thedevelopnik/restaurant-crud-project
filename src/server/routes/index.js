@@ -11,8 +11,7 @@ var pages = {
   'new': {
     title: 'New Restaurant',
     name: 'New Restaurant',
-    link: '/',
-    linkText: 'Home'
+    link: '/restauran'
   }
 };
 
@@ -151,7 +150,7 @@ function renderPages () {
     if (p1 === 'restaurants' && p2 && p3 === 'edit') {
       renderEdit();
     } else if (p1 === 'restaurants' && p2 === 'new') {
-      res.render('new', pages['new']);
+      res.render('new');
     } else if (p1 && p2 && p2 !== 'new') {
       renderShow();
     } else if (!p1 || p1 === 'restaurants') {
