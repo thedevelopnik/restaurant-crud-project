@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-img {
+  width: 50%;
+  height: 50%;
+}
