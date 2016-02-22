@@ -1,6 +1,6 @@
 //render home page if no params or if param is restaurants
-function renderHome(par1) {
-  router.param('/:page?', function(req, res, next) {
+function renderHome() {
+  router.get('/:page?', function(req, res, next) {
     var page = req.params.page;
     if (!page || page === 'restaurants') {
       res.render('index', pages['/']);
