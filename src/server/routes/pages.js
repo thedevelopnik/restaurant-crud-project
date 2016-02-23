@@ -8,7 +8,8 @@ var pages = {
   'new': {
     title: 'New Restaurant',
     name: 'New Restaurant',
-    link: '/'
+    link: '/',
+    linkText: 'Home'
   }
 };
 
