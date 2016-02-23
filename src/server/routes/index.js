@@ -9,43 +9,46 @@ var restaurantNames = Object.keys(restaurants);
 // render restaurant new page if new is called OR
 // render Show page of identified restaurant OR
 // render home page if no params are passed or restaurant is the first param
-function renderPages () {
-  router.get('/:p1?/:p2?/:p3?', function(req, res, next) {
-    var p1 = req.params.p1;
-    var p2 = req.params.p2;
-    var p3 = req.params.p3;
-    var thisRestaurant;
-    if (p1 === 'restaurants' && p2 && p3 === 'edit') {
-      for (i = 0; i < restaurantNames.length; i++ ) {
-        if (p2 === restaurantNames[i]) {
-          thisRestaurant = restaurantNames[i];
-        }
-      }
-      if (thisRestaurant) {
-        res.render('edit',  restaurants[thisRestaurant]);
-      } else {
-        res.render('error');
-      }
-    } else if (p1 === 'restaurants' && p2 === 'new') {
-      res.render('new', pages['new']);
-    } else if (p1 && p2 && p2 !== 'new') {
-      for (i = 0; i < restaurantNames.length; i++ ) {
-        if (p2 === restaurantNames[i]) {
-          thisRestaurant = restaurantNames[i];
-        }
-      }
-      if (thisRestaurant) {
-        res.render('show', restaurants[thisRestaurant]);
-      }
-      else {
-        res.render('error');
-      }
-    } else if (!p1 || p1 === 'restaurants') {
-      res.render('index', pages['/']);
-    }
-  });
-}
+router.get('/:page?', function(req, res, next) {
+  var page = req.params.page;
+  if (!page || page === 'restaurants') {
+    res.render('index', pages['/']);
+  }
+});
 
-renderPages();
+router.get('/restaurant/:id/edit', function(req, res, next) {
+  var restId = req.params.id;
+  var thisRestaurant;
+  for (var i = 0; i < restaurantNames.length; i++ ) {
+    if (restId === restaurantNames[i]) {
+      thisRestaurant = restaurantNames[i];
+    }
+  }
+  if (thisRestaurant) {
+    res.render('edit',  restaurants[thisRestaurant]);
+  } else {
+    res.render('error');
+  }
+});
+
+router.get('/restaurants/new', function(req, res, next) {
+  res.render('new', pages['new']);
+});
+
+router.get('/restaurants/:id', function(req, res, next) {
+  var restId = req.params.id;
+  var thisRestaurant;
+  for (var i = 0; i < restaurantNames.length; i++ ) {
+    if (restId === restaurantNames[i]) {
+      thisRestaurant = restaurantNames[i];
+    }
+  }
+  if (thisRestaurant) {
+    res.render('show', restaurants[thisRestaurant]);
+  }
+  else {
+    res.render('error');
+  }
+});
 
 module.exports = router;
