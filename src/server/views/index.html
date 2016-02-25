@@ -7,33 +7,42 @@
 
   <div class='container-fluid'>
 
-    <header class='row primary-color-back bottom-margin'>
-      <div class='col-md-4'>
+      <nav class='navbar navbar-default'>
+        <div class='container-fluid'>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{ name }}</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="{{ link }}">{{ linkText }}<span class="sr-only">(current)</span></a></li>
+            </ul>
+          </div>
       </div>
-      <div class='col-md-4'>
-        <h1 class='center-text'>{{ name }}</h1>
-      </div>
-      <div class='col-md-4'>
-        <a href='{{ link }}' class='bottom-right main-link'>{{ linkText }}</a>
-      </div>
-    </header>
+    </nav>
 
     <main>
       <div class='row bottom-margin'>
         <section class='col-md-12 flex-container'>
-          <div id='r1' class='secondary-color-back res-div'>
-            <h2>Los Tacos</h2>
-            <img src='/images/mexican.png' class='home-img'/>
-            <p>
-              Mexican Cuisine
-            </p>
-            <p>
-              Denver, CO
-            </p>
-            <p>
-              Rating: 5
-            </p>
-          </div>
+            <div id='r1' class='secondary-color-back res-div'>
+              <h2>Los Tacos</h2>
+              <img src='/images/mexican.png' class='home-img'/>
+              <p>
+                Mexican Cuisine
+              </p>
+              <p>
+                Denver, CO
+              </p>
+              <p>
+                Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
+              </p>
+            </div>
 
           <div id='r2' class='secondary-color-back res-div'>
             <h2>Burger Bar</h2>
@@ -45,7 +54,7 @@
               Seattle, WA
             </p>
             <p>
-              Rating: 5
+              Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
             </p>
           </div>
 
@@ -59,7 +68,7 @@
               Sacramento, CA
             </p>
             <p>
-              Rating: 3
+              Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
             </p>
           </div>
         </section>
@@ -77,7 +86,7 @@
               Brooklyn, NY
             </p>
             <p>
-              Rating: 2
+              Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
             </p>
           </div>
 
@@ -91,7 +100,7 @@
               Boulder, CO
             </p>
             <p>
-              Rating: 2
+              Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
             </p>
           </div>
 
@@ -105,7 +114,7 @@
               Lincoln, NE
             </p>
             <p>
-              Rating: 1
+              Rating: <img src='/images/star.png' class='star'>
             </p>
           </div>
         </section>

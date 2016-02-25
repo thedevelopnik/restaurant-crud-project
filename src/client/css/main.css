@@ -1,7 +1,4 @@
-.primary-color-back {
-  background-color: #70ae6e;
-  color: white;
-}
+
 
 .main-link {
   font-size: 2rem;
@@ -19,6 +16,11 @@
 .secondary-color-back {
   background-color: #3C6e71;
   color: white;
+}
+
+.star {
+  width: 30px;
+  height: 30px;
 }
 
 .center-text {
