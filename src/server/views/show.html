@@ -43,9 +43,7 @@
             <p>
               {{ desc }}
             </p>
-            <p>
-              Rating: {% for {{ rating }} %}<img src='/images/star.png' class='star'>{% endfor %}
-            </p>
+            <div class="rateit" data-rateit-value="{{ rating }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
           </div>
         </div>
         <button class='btn btn-lg btn-success'>Edit</button>
