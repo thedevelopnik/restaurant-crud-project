@@ -12,7 +12,7 @@ var restaurantNames = Object.keys(restaurants);
 router.get('/:page?', function(req, res, next) {
   var page = req.params.page;
   if (!page || page === 'restaurants') {
-    res.render('index', pages['/']);
+    res.render('index', {restaurants: restaurants});
   }
 });
 

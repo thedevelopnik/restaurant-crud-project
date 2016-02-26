@@ -28,144 +28,29 @@
   </nav>
 
   <main>
-    <div class='row'>
-      <a href='/restaurants/los-tacos'>
-        <section id='r1' class='col-md-4'>
-          <div class='panel panel-default'>
-            <div class='panel-heading'>
-              <h2 class='panel-title'>Los Tacos</h2>
-            </div>
-            <div class='panel-body'>
-              <img src='/images/mexican.png' class='home-img'/>
-              <p>
-                Mexican Cuisine
-              </p>
-              <p>
-                Denver, CO
-              </p>
-              <p>
-                Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
-              </p>
-            </div>
+    {% for res in restaurants %}
+    <a href='/restaurants/{{ loop.key }}'>
+      <section id='r1' class='col-md-4'>
+        <div class='panel panel-default'>
+          <div class='panel-heading'>
+            <h2 class='panel-title'>{{ res.name }}</h2>
           </div>
-        </section>
-      </a>
-
-      <a href='/restaurants/burger-bar'>
-        <section id='r2' class='col-md-4'>
-          <div class='panel panel-default'>
-            <div class='panel-heading'>
-              <h2 class='panel-title'>Burger Bar</h2>
-            </div>
-            <div class='panel-body'>
-              <img src='/images/burger.png' class='home-img'/>
-              <p>
-                American Cuisine
-              </p>
-              <p>
-                Seattle, WA
-              </p>
-              <p>
-                Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
-              </p>
-            </div>
+          <div class='panel-body'>
+            <img src='{{ res.image }}' class='home-img'/>
+            <p>
+              {{ res.cuisine }}
+            </p>
+            <p>
+              {{ res.city }}, {{ res.state }}
+            </p>
+            <p>
+              <div class="rateit" data-rateit-value="{{ res.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+            </p>
           </div>
-        </section>
-      </a>
-
-      <a href='/restaurants/pasta-freddys'>
-        <section id='r3' class='col-md-4'>
-          <div class='panel panel-default'>
-            <div class='panel-heading'>
-              <h2 class='panel-title'>Pasta Freddy's</h2>
-            </div>
-            <div class='panel-body'>
-              <img src='/images/italian.png' class='home-img'/>
-              <p>
-                Italian Cuisine
-              </p>
-              <p>
-                Sacramento, CA
-              </p>
-              <p>
-                Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
-              </p>
-            </div>
-          </div>
-        </section>
-      </a>
-    </div>
-
-    <div class='row'>
-      {% for x in }
-
-      <a href='/restaurants/bangkok-grill'>
-        <section id='r1' class='col-md-4'>
-          <div class='panel panel-default'>
-            <div class='panel-heading'>
-              <h2 class='panel-title'>Bangkok Grill</h2>
-            </div>
-            <div class='panel-body'>
-              <img src='/images/thai.jpg' class='home-img'/>
-              <p>
-                Thai Cuisine
-              </p>
-              <p>
-                Brooklyn, NY
-              </p>
-              <p>
-                Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
-              </p>
-            </div>
-          </div>
-        </section>
-      </a>
-
-      <a href='/restaurants/pho-mazing'>
-        <section id='r2' class='col-md-4'>
-          <div class='panel panel-default'>
-            <div class='panel-heading'>
-              <h2 class='panel-title'>Pho Mazing</h2>
-            </div>
-            <div class='panel-body'>
-              <img src='/images/pho.jpg' class='home-img'/>
-              <p>
-                Vietnamese Cuisine
-              </p>
-              <p>
-                Boulder, CO
-              </p>
-              <p>
-                Rating: <img src='/images/star.png' class='star'><img src='/images/star.png' class='star'>
-              </p>
-            </div>
-          </div>
-        </section>
-      </a>
-
-      <a href='/restaurants/fiestaritos'>
-        <section id='r3' class='col-md-4'>
-          <div class='panel panel-default'>
-            <div class='panel-heading'>
-                <h2 class='panel-title'>Fiestaritos</h2>
-            </div>
-            <div class='panel-body'>
-              <img src='/images/mexican.png' class='home-img'/>
-              <p>
-                Mexican Cuisine
-              </p>
-              <p>
-                Lincoln, NE
-              </p>
-              <p>
-                Rating: <img src='/images/star.png' class='star'>
-              </p>
-            </div>
-          </div>
-        </section>
-      </a>
-    </div>
-
+        </div>
+      </section>
+    </a>
+    {% endfor %}
   </main>
 
 
