@@ -1,6 +1,7 @@
 var restaurants = {
   1:
   {
+    id: 1,
     name: 'Los Tacos',
     cuisine: 'Mexican Cuisine',
     city: 'Denver',
@@ -10,6 +11,7 @@ var restaurants = {
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
   2: {
+    id: 2,
     name: 'Burger Bar',
     cuisine: 'American Cuisine',
     city: 'Seattle',
@@ -19,6 +21,7 @@ var restaurants = {
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
   3: {
+    id: 3,
     name: 'Pasta Freddy\'s',
     cuisine: 'Italian Cuisine',
     city: 'Sacramento',
@@ -28,6 +31,7 @@ var restaurants = {
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
   4: {
+    id: 4,
     name: 'Bangkok Grill',
     cuisine: 'Thai Cuisine',
     city: 'Brooklyn',
@@ -37,6 +41,7 @@ var restaurants = {
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
   5: {
+    id: 5,
     name: 'Pho Mazing',
     cuisine: 'Vietnamese Cuisine',
     city: 'Boulder',
@@ -46,6 +51,7 @@ var restaurants = {
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
   6: {
+    id: 6,
     name: 'Fiestaritos',
     cuisine: 'Mexican Cuisine',
     city: 'Lincoln',

@@ -38,7 +38,7 @@
               {{ cuisine }}
             </p>
             <p>
-              Located in {{ loc }}
+              Located in {{ city }}, {{ state }}
             </p>
             <p>
               {{ desc }}
@@ -46,7 +46,9 @@
             <div class="rateit" data-rateit-value="{{ rating }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
           </div>
         </div>
-        <button class='btn btn-lg btn-success'>Edit</button>
+        <a href='/restaurants/{{ id }}/edit'>
+          <button class='btn btn-lg btn-success'>Edit</button>
+        </a>
         <button class='btn btn-lg btn-danger'>Delete</button>
       </section>
     </div>

@@ -11,12 +11,14 @@ var restaurantNames = Object.keys(restaurants);
 // render home page if no params are passed or restaurant is the first param
 router.get('/:page?', function(req, res, next) {
   var page = req.params.page;
-  if (!page || page === 'restaurants') {
+  if (!page) {
     res.render('index', {restaurants: restaurants});
+  } else if (page === 'restaurants') {
+    res.redirect('/');
   }
 });
 
-router.get('/restaurant/:id/edit', function(req, res, next) {
+router.get('/restaurants/:id/edit', function(req, res, next) {
   var restId = req.params.id;
   var thisRestaurant;
   for (var i = 0; i < restaurantNames.length; i++ ) {
