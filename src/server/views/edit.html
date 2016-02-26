@@ -16,7 +16,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Edit <strong>{{ name }}</strong></a>
+          <a class="navbar-brand" href="#">Edit <strong>{{ restaurants.name }}</strong></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -35,17 +35,17 @@
         <form>
           <div class='form-group'>
             <label for='name'>Name</label>
-            <input type='text' name='name' class='form-control' maxlength='40' value='{{ name }}' placeholder='Restaurant name' required/>
+            <input type='text' name='name' class='form-control' maxlength='40' value='{{ restaurants.name }}' placeholder='Restaurant name' required/>
           </div>
           <div class='form-group'>
             <label for='city'>Location</label><br />
-            <input type='text' name='city' class='form-control' value='{{ city }}' placeholder='City' required/>
+            <input type='text' name='city' class='form-control' value='{{ restaurants.city }}' placeholder='City' required/>
             <br />
             <select class="form-control" id="state" name="state" required>
-            {% if state %}
-              <option value="{{ state }}" selected>{{ state }}</option>
+            {% if restaurants.state %}
+              <option value="{{ restaurants.state }}" selected>{{ restaurants.state }}</option>
             {% endif %}
-            {% if !state %}
+            {% if !restaurants.state %}
               <option value="" disabled selected>-- State --</option>
             {% endif %}
               <option value="AK">AK</option>
@@ -105,10 +105,10 @@
           <div class='form-group'>
             <label for='cuisine'>Cuisine</label>
             <select name='cuisine' class='form-control' required>
-              {% if cuisine %}
-                <option value="{{ cuisine }}" selected>{{ cuisine }}</option>
+              {% if restaurants.cuisine %}
+                <option value="{{ restaurants.cuisine }}" selected>{{ restaurants.cuisine }}</option>
               {% endif %}
-              {% if !cuisine %}
+              {% if !restaurants.cuisine %}
                 <option value="" disabled selected>-- Cuisine --</option>
               {% endif %}
               <option value='American Cuisine'>
@@ -131,16 +131,16 @@
           <div class='form-group'>
             <label for='rating'>Rating</label>
             <br />
-            <div class="rateit" data-rateit-value="{{ rating }}" data-rateit-ispreset="true"></div>
+            <div class="rateit" data-rateit-value="{{ restaurants.rating }}" data-rateit-ispreset="true"></div>
           </div>
           <div class='form-group'>
             <label for='image'>Image</label>
-            <input type='url' class='form-control' value='{{ image }}' placeholder='Enter a url' required/>
+            <input type='url' class='form-control' value='{{ restaurants.image }}' placeholder='Enter a url' required/>
           </div>
           <div class='form-group'>
             <label for='description'>Tell us about it!</label>
             <textarea name='description' class='form-control' placeholder='Enter a description of the restaurant.' rows='10' cols='30' required>
-              {{ desc }}
+              {{ restaurants.descrip }}
             </textarea>
           </div>
           <input type='submit' value='Submit' class='btn btn-lg btn-success'/>

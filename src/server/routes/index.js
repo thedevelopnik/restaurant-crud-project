@@ -39,18 +39,28 @@ router.get('/:page?', function(req, res, next) {
 });
 
 router.get('/restaurants/:id/edit', function(req, res, next) {
-  var restId = req.params.id;
-  var thisRestaurant;
-  for (var i = 0; i < restaurantNames.length; i++ ) {
-    if (restId === restaurantNames[i]) {
-      thisRestaurant = restaurantNames[i];
+  var id = req.params.id;
+  var responseArray = [];
+  pg.connect(connectionString, function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      done();
+      return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
     }
-  }
-  if (thisRestaurant) {
-    res.render('edit',  restaurants[thisRestaurant]);
-  } else {
-    res.render('error');
-  }
+
+    var query = client.query('select * from restaurants where id=' + id);
+    query.on('row', function(row) {
+      responseArray.push(row);
+    });
+
+    query.on('end', function() {
+      console.log(responseArray);
+      res.render('edit', {restaurants: responseArray[0]});
+      done();
+    });
+     pg.end();
+  });
 });
 
 router.get('/restaurants/new', function(req, res, next) {
