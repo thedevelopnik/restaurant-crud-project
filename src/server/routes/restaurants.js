@@ -1,5 +1,5 @@
 var restaurants = {
-'los-tacos':
+  1:
   {
     name: 'Los Tacos',
     cuisine: 'Mexican Cuisine',
@@ -9,7 +9,7 @@ var restaurants = {
     image: '/images/mexican.png',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
-'burger-bar': {
+  2: {
     name: 'Burger Bar',
     cuisine: 'American Cuisine',
     city: 'Seattle',
@@ -18,7 +18,7 @@ var restaurants = {
     image: '/images/burger.png',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
-'pasta-freddys': {
+  3: {
     name: 'Pasta Freddy\'s',
     cuisine: 'Italian Cuisine',
     city: 'Sacramento',
@@ -27,7 +27,7 @@ var restaurants = {
     image: '/images/italian.png',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
-'bangkok-grill': {
+  4: {
     name: 'Bangkok Grill',
     cuisine: 'Thai Cuisine',
     city: 'Brooklyn',
@@ -36,7 +36,7 @@ var restaurants = {
     image: '/images/thai.jpg',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
-'pho-mazing': {
+  5: {
     name: 'Pho Mazing',
     cuisine: 'Vietnamese Cuisine',
     city: 'Boulder',
@@ -45,7 +45,7 @@ var restaurants = {
     image: '/images/pho.jpg',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
-'fiestaritos': {
+  6: {
     name: 'Fiestaritos',
     cuisine: 'Mexican Cuisine',
     city: 'Lincoln',
