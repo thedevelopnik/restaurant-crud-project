@@ -64,7 +64,7 @@ router.get('/restaurants/:id/edit', function(req, res, next) {
 });
 
 router.get('/restaurants/new', function(req, res, next) {
-  res.render('new', pages['new']);
+  res.render('new');
 });
 
 router.get('/restaurants/:id', function(req, res, next) {
