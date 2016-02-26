@@ -2,8 +2,8 @@
 
 $(document).on('ready', function() {
   console.log('sanity check!');
+  $('#cancel').on('click', function(e) {
+    e.preventDefault();
+    location.href = '/';
+  });
 });
-
-function outputUpdate(rat) {
-	document.querySelector('#faderOutput').value = 'Rating: ' + rat + ' Stars';
-}
