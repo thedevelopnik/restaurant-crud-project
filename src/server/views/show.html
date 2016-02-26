@@ -16,7 +16,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">{{ name }}</a>
+          <a class="navbar-brand" href="#">{{ restaurants.name }}</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -29,24 +29,24 @@
 
     <div class='row'>
       <section class='col-md-6'>
-        <img src='{{ image }}' />
+        <img src='{{ restaurants.image }}' />
       </section>
       <section class='col-md-6'>
         <div class='panel panel-default'>
           <div class='panel-body'>
             <p>
-              {{ cuisine }}
+              {{ restaurants.cuisine }}
             </p>
             <p>
-              Located in {{ city }}, {{ state }}
+              Located in {{ restaurants.city }}, {{ restaurants.state }}
             </p>
             <p>
-              {{ desc }}
+              {{ restaurants.descrip }}
             </p>
-            <div class="rateit" data-rateit-value="{{ rating }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+            <div class="rateit" data-rateit-value="{{ restaurants.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
           </div>
         </div>
-        <a href='/restaurants/{{ id }}/edit'>
+        <a href='/restaurants/{{ restaurants.id }}/edit'>
           <button class='btn btn-lg btn-success'>Edit</button>
         </a>
         <button class='btn btn-lg btn-danger'>Delete</button>
