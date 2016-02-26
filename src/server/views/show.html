@@ -7,32 +7,49 @@
 
   <div class="container-fluid">
 
-    <div class='row'>
-      <header class='col-md-12'>
-        <h1>{{ name }}</h1>
-        <a href='{{ link }}'>{{ linkText }}</a>
-      </header>
-    </div>
+    <nav class='navbar navbar-default'>
+      <div class='container-fluid'>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{{ name }}</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div class='row'>
       <section class='col-md-6'>
         <img src='{{ image }}' />
       </section>
       <section class='col-md-6'>
-        <p>
-          {{ cuisine }}
-        </p>
-        <p>
-          Located in {{ loc }}
-        </p>
-        <p>
-          {{ desc }}
-        </p>
-        <p>
-          Rating: {{ rating }}
-        </p>
-        <button class='success'>Edit</button>
-        <button class='danger'>Delete</button>
+        <div class='panel panel-default'>
+          <div class='panel-body'>
+            <p>
+              {{ cuisine }}
+            </p>
+            <p>
+              Located in {{ loc }}
+            </p>
+            <p>
+              {{ desc }}
+            </p>
+            <p>
+              Rating: {% for {{ rating }} %}<img src='/images/star.png' class='star'>{% endfor %}
+            </p>
+          </div>
+        </div>
+        <button class='btn btn-lg btn-success'>Edit</button>
+        <button class='btn btn-lg btn-danger'>Delete</button>
       </section>
     </div>
 
