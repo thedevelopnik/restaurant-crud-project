@@ -7,16 +7,25 @@
 
   <div class="container-fluid">
 
-    <header class='row primary-color-back bottom-margin'>
-      <div class='col-md-4'>
+    <nav class='navbar navbar-default'>
+      <div class='container-fluid'>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">New Restaurant</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div>
       </div>
-      <div class='col-md-4'>
-        <h1 class='center-text'>{{ name }}</h1>
-      </div>
-      <div class='col-md-4'>
-        <a href='{{ link }}' class='bottom-right main-link'>{{ linkText }}</a>
-      </div>
-    </header>
+    </nav>
 
     <div class='row'>
       <div class='col-md-1'>
@@ -24,107 +33,110 @@
 
       <div class='col-md-10'>
         <form>
-          <label for='name'>Name</label>
-          <br />
-          <input type='text' name='name' class='form-control' placeholder='Restaurant Name' />
-          <br />
-          <br />
-          <label for='city'>Location</label><br />
-          <input type='text' name='city' class='form-control' placeholder='city' />
-          <br />
-          <br />
-          <select class="form-control" id="state" name="state" required>
-              <option value="" disabled selected>-- State --</option>
-              <option value="AK">AK</option>
-              <option value="AL">AL</option>
-              <option value="AR">AR</option>
-              <option value="AZ">AZ</option>
-              <option value="CA">CA</option>
-              <option value="CO">CO</option>
-              <option value="CT">CT</option>
-              <option value="DC">D.C.</option>
-              <option value="DE">DE</option>
-              <option value="FL">FL</option>
-              <option value="GA">GA</option>
-              <option value="HI">HI</option>
-              <option value="IA">IA</option>
-              <option value="ID">ID</option>
-              <option value="IL">IL</option>
-              <option value="IN">IN</option>
-              <option value="KS">KS</option>
-              <option value="KY">KY</option>
-              <option value="LA">LA</option>
-              <option value="MA">MA</option>
-              <option value="MD">MD</option>
-              <option value="ME">ME</option>
-              <option value="MI">MI</option>
-              <option value="MN">MN</option>
-              <option value="MO">MO</option>
-              <option value="MS">MS</option>
-              <option value="MT">MT</option>
-              <option value="NC">NC</option>
-              <option value="ND">ND</option>
-              <option value="NE">NE</option>
-              <option value="NH">NH</option>
-              <option value="NJ">NJ</option>
-              <option value="NM">NM</option>
-              <option value="NV">NV</option>
-              <option value="NY">NY</option>
-              <option value="OH">OH</option>
-              <option value="OK">OK</option>
-              <option value="OR">OR</option>
-              <option value="PA">PA</option>
-              <option value="PR">PR</option>
-              <option value="RI">RI</option>
-              <option value="SC">SC</option>
-              <option value="SD">SD</option>
-              <option value="TN">TN</option>
-              <option value="TX">TX</option>
-              <option value="UT">UT</option>
-              <option value="VA">VA</option>
-              <option value="VT">VT</option>
-              <option value="WA">WA</option>
-              <option value="WI">WI</option>
-              <option value="WV">WV</option>
-              <option value="WY">WY</option>
-          </select>
-          <br />
-          <label for='cuisine'>Cuisine</label>
-          <br />
-          <select name='cuisine' class='form-control'>
-            <option value='American Cuisine'>
-              American
-            </option>
-            <option value='Italian Cuisine'>
-              Italian
-            </option>
-            <option value='Mexican Cuisine'>
-              Mexican
-            </option>
-            <option value='Thai Cuisine'>
-              Thai
-            </option>
-            <option value='Vietnamese Cuisine'>
-              Vietnamese
-            </option>
-          </select>
-          <br />
-          <label for='rating'>Rating</label>
-          <br />
-          <div class='rateit'>
+          <div class='form-group'>
+            <label for='name'>Name</label>
+            <input type='text' name='name' class='form-control' placeholder='Restaurant name' />
           </div>
-          <br />
-          <label for='image'>Image</label>
-          <br />
-          <input type='text' class='form-control' placeholder='enter a url' />
-          <br />
-          <br />
-          <label for='description'>Tell us about it!</label>
-          <br />
-          <textarea name='description' class='form-control' placeholder='Enter a description of the restaurant.' rows='10' cols='30'>
-          </textarea>
-
+          <div class='form-group'>
+            <label for='city'>Location</label><br />
+            <input type='text' name='city' class='form-control' placeholder='City' />
+            <br />
+            <select class="form-control" id="state" name="state" required>
+                <option value="" disabled selected>-- State --</option>
+                <option value="AK">AK</option>
+                <option value="AL">AL</option>
+                <option value="AR">AR</option>
+                <option value="AZ">AZ</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DC">D.C.</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="IA">IA</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="MA">MA</option>
+                <option value="MD">MD</option>
+                <option value="ME">ME</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MO">MO</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="NC">NC</option>
+                <option value="ND">ND</option>
+                <option value="NE">NE</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NV">NV</option>
+                <option value="NY">NY</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="PR">PR</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VA">VA</option>
+                <option value="VT">VT</option>
+                <option value="WA">WA</option>
+                <option value="WI">WI</option>
+                <option value="WV">WV</option>
+                <option value="WY">WY</option>
+            </select>
+          </div>
+          <div class='form-group'>
+            <label for='cuisine'>Cuisine</label>
+            <select name='cuisine' class='form-control'>
+              <option value="" disabled selected>-- Cuisine --</option>
+              <option value='American Cuisine'>
+                American
+              </option>
+              <option value='Italian Cuisine'>
+                Italian
+              </option>
+              <option value='Mexican Cuisine'>
+                Mexican
+              </option>
+              <option value='Thai Cuisine'>
+                Thai
+              </option>
+              <option value='Vietnamese Cuisine'>
+                Vietnamese
+              </option>
+            </select>
+          </div>
+          <div class='form-group'>
+            <label for='rating'>Rating</label>
+            <br />
+            <div name='rating' class='rateit'>
+            </div>
+          </div>
+          <div class='form-group'>
+            <label for='image'>Image</label>
+            <input type='text' class='form-control' placeholder='Enter a url' />
+          </div>
+          <div class='form-group'>
+            <label for='description'>Tell us about it!</label>
+            <textarea name='description' class='form-control' placeholder='Enter a description of the restaurant.' rows='10' cols='30'>
+            </textarea>
+          </div>
+          <input type='submit' value='Submit' class='btn btn-lg btn-success'/>
+          <a href='/'><button class='btn btn-lg btn-danger'>Cancel</button></a>
         </form>
+
       </div>
 
       <div class='col-md-1'>
