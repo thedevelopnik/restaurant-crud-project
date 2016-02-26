@@ -7,8 +7,6 @@ var restaurants = {
     state: 'CO',
     rating: 5,
     image: '/images/mexican.png',
-    homeLink: "/",
-    hlText: 'Home',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
 'burger-bar': {
@@ -18,8 +16,6 @@ var restaurants = {
     state: 'WA',
     rating: 5,
     image: '/images/burger.png',
-    homeLink: "/",
-    hlText: 'Home',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
 'pasta-freddys': {
@@ -29,8 +25,6 @@ var restaurants = {
     state: 'CA',
     rating: 3,
     image: '/images/italian.png',
-    homeLink: "/",
-    hlText: 'Home',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
 'bangkok-grill': {
@@ -40,8 +34,6 @@ var restaurants = {
     state: 'NY',
     rating: 2,
     image: '/images/thai.jpg',
-    homeLink: "/",
-    hlText: 'Home',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
 'pho-mazing': {
@@ -51,8 +43,6 @@ var restaurants = {
     state: 'CO',
     rating: 2,
     image: '/images/pho.jpg',
-    homeLink: "/",
-    hlText: 'Home',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   },
 'fiestaritos': {
@@ -62,8 +52,6 @@ var restaurants = {
     state: 'NE',
     rating: 1,
     image: '/images/mexican.png',
-    homeLink: "/",
-    hlText: 'Home',
     desc: 'Busy and easygoing outpost for Mexican comfort food such as carnitas paired with potent margaritas. Known for mexican meals with a side of spicy green chili.'
   }
 };
