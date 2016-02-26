@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var pages = require('./pages');
-var restaurants = require('./restaurants');
-var restaurantNames = Object.keys(restaurants);
+var pg = require('pg');
+var connectionString = 'postgres://localhost:5432/gTables';
 
 
 // render restaurant edit page of identified restaurant OR
@@ -11,8 +11,28 @@ var restaurantNames = Object.keys(restaurants);
 // render home page if no params are passed or restaurant is the first param
 router.get('/:page?', function(req, res, next) {
   var page = req.params.page;
+  var responseArray = [];
   if (!page) {
-    res.render('index', {restaurants: restaurants});
+    pg.connect(connectionString, function(err, client, done) {
+
+      if(err) {
+        console.log(err);
+        done();
+        return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
+      }
+
+      var query = client.query('select * from restaurants');
+      console.log(query);
+      query.on('row', function(row) {
+        responseArray.push(row);
+      });
+
+      query.on('end', function() {
+        res.render('index', {restaurants: responseArray});
+        done();
+      });
+       pg.end();
+    });
   } else if (page === 'restaurants') {
     res.redirect('/');
   }
