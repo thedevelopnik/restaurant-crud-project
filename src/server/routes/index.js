@@ -95,17 +95,22 @@ router.get('/restaurants/:id', function(req, res, next) {
 router.delete('/restaurants/:id', function(req, res, next) {
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
+      res.status(500).json({status: 'error',message: 'Something didn\'t work'});
       done();
-      return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
+
     }
     var query = client.query('delete from restaurants where id=' + req.params.id);
 
     query.on('end', function() {
-      res.json({status: 'success', message: 'You deleted the restaurant!'});
+      res.status(200).json({status: 'success', message: 'You deleted the restaurant!'});
       done();
     });
     pg.end();
   });
+});
+
+router.get('/del', function(req, res, next) {
+  res.render('delConf');
 });
 
 module.exports = router;

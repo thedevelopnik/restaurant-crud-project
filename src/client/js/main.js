@@ -4,13 +4,19 @@ $(document).on('ready', function() {
   console.log('sanity check!');
 });
 
-$('#delete-res').on('click', function(e){
+function delRes () {
   var thisUrl = window.location.href;
   $.ajax({
     url: thisUrl,
-    method: 'delete',
+    method: 'DELETE',
     success: function(data) {
-      console.log('You deleted a restaurant!');
+      console.log(data);
+      alert('You deleted a restaurant!');
+      window.location.href='/';
     }
   });
+}
+
+$('#delete-res').on('click', function(e){
+  delRes();
 });
