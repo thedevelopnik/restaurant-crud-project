@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var pages = require('./pages');
 var pg = require('pg');
+var Promise = require('bluebird');
+Promise.promisifyAll(pg);
 var connectionString = 'postgres://localhost:5432/gTables';
 
 
@@ -104,6 +105,26 @@ router.delete('/restaurants/:id', function(req, res, next) {
     query.on('end', function() {
       res.status(200).json({status: 'success', message: 'You deleted the restaurant!'});
       done();
+    });
+    pg.end();
+  });
+});
+
+router.post('/restaurants', function(req, res, next) {
+  var newRes = req.body;
+  pg.connect(connectionString, function(err, client, done) {
+    if(err) {
+      done();
+      return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
+    }
+    var responseArray = [];
+    var queryGET = client.query("select id from restaurants");
+    queryGET.on('row', function(row) {
+      responseArray.push(row);
+    });
+    var queryPOST = client.query("insert into restaurants (name, city, state, cuisine, image, descrip) values ('" + newRes.name + "', '" + newRes.city + "', '" + newRes.state + "', '" + newRes.cuisine + "', '" + newRes.image + "', '" + newRes.descrip + "')");
+    queryGET.on('end', function() {
+      res.redirect('/restaurants/' + (responseArray.length + 1));
     });
     pg.end();
   });

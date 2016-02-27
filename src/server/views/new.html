@@ -32,7 +32,7 @@
       </div>
 
       <div class='col-md-10'>
-        <form>
+        <form method='post'>
           <div class='form-group'>
             <label for='name'>Name</label>
             <input type='text' name='name' class='form-control' maxlength='40' placeholder='Restaurant name' required/>
@@ -101,33 +101,32 @@
             <label for='cuisine'>Cuisine</label>
             <select name='cuisine' class='form-control' required>
               <option value="" disabled selected>-- Cuisine --</option>
-              <option value='American Cuisine'>
+              <option value='American'>
                 American
               </option>
-              <option value='Italian Cuisine'>
+              <option value='Italian'>
                 Italian
               </option>
-              <option value='Mexican Cuisine'>
+              <option value='Mexican'>
                 Mexican
               </option>
-              <option value='Thai Cuisine'>
+              <option value='Thai'>
                 Thai
               </option>
-              <option value='Vietnamese Cuisine'>
+              <option value='Vietnamese'>
                 Vietnamese
               </option>
             </select>
           </div>
           <div class='form-group'>
             <label for='image'>Image</label>
-            <input type='url' class='form-control' placeholder='Enter a url' required/>
+            <input name='image' type='url' class='form-control' placeholder='Enter a url' required/>
           </div>
           <div class='form-group'>
-            <label for='description'>Tell us about it!</label>
-            <textarea name='description' class='form-control' placeholder='Enter a description of the restaurant.' rows='10' cols='30' required>
-            </textarea>
+            <label for='descrip'>Tell us about it!</label>
+            <textarea name='descrip' class='form-control' placeholder='Enter a description of the restaurant.' rows='10' cols='30' required></textarea>
           </div>
-          <input type='submit' value='Submit' class='btn btn-lg btn-success'/>
+          <input formaction='/restaurants' type='submit' value='Submit' class='btn btn-lg btn-success'/>
           <a href='/' class='btn btn-lg btn-danger'>Cancel</a>
         </form>
 

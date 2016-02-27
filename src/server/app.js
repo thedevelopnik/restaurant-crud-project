@@ -6,6 +6,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
+var pg = require('pg');
+var Promise = require('bluebird');
 
 
 // *** routes *** //
