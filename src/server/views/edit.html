@@ -134,11 +134,9 @@
           </div>
           <div class='form-group'>
             <label for='description'>Tell us about it!</label>
-            <textarea name='description' class='form-control' placeholder='Enter a description of the restaurant.' rows='10' cols='30' required>
-              {{ restaurants.descrip }}
-            </textarea>
+            <textarea name='description' class='form-control' placeholder='Enter a description of the restaurant.' rows='10' cols='30' required>{{ restaurants.descrip }}</textarea>
           </div>
-          <input type='submit' value='Submit' class='btn btn-lg btn-success'/>
+          <input id='update-res' type='submit' value='Submit' class='btn btn-lg btn-success'/>
           <a href='/restaurants/{{ id }}' class='btn btn-lg btn-danger'>Cancel</a>
         </form>
 

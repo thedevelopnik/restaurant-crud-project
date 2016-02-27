@@ -130,4 +130,25 @@ router.post('/restaurants', function(req, res, next) {
   });
 });
 
+router.put('/restaurants/:id/edit', function(req, res, next) {
+  var updateRes = req.body;
+  var resVars = Object.keys(updateRes);
+  pg.connect(connectionString, function(err, client, done) {
+    if(err) {
+      done();
+      return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
+    }
+    for (i = 0; i < resVars.length; i++) {
+      var key = resVars[i];
+      var value = updateRes[key];
+      var query = client.query("update wines set " + key + "='" + value + "' " + "where id=" + req.params.id);
+      query.on('end', function() {
+        res.redirect('/restaurants/' + req.params.id);
+        done();
+      });
+    }
+    pg.end();
+  });
+});
+
 module.exports = router;
