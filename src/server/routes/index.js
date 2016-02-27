@@ -109,8 +109,4 @@ router.delete('/restaurants/:id', function(req, res, next) {
   });
 });
 
-router.get('/del', function(req, res, next) {
-  res.render('delConf');
-});
-
 module.exports = router;
