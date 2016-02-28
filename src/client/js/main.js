@@ -29,7 +29,6 @@ $('#rateit1').on('click', function() {
 });
 
 var truncated = $('.truncate');
-console.log(truncated);
 var truncLength = 35;
 
 truncated.each(function() {

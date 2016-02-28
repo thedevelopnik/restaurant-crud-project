@@ -48,4 +48,4 @@ insert into restaurants
 
 insert into reviews (res_id, rev_name, rev_date, rating, review)
   values
-  (1, 'Jane Smith', '2016-02-27', 5, 'I loved this place!'), (1, 'Joe Schmoe', '2016-02-26', 3, 'It was alright. The rice was dry.')
+  (1, 'Jane Smith', '2016-02-27', 5, 'I loved this place!'), (1, 'Joe Schmoe', '2016-02-26', 3, 'It was alright. The rice was dry.');

@@ -1,5 +1,6 @@
 \connect gTables
 
+drop table if exists reviews;
 drop table if exists restaurants;
 create table restaurants
   (id serial primary key,

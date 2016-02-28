@@ -6,13 +6,14 @@ Promise.promisifyAll(pg);
 var connectionString = 'postgres://localhost:5432/gTables';
 
 
+
 // render restaurant edit page of identified restaurant OR
 // render restaurant new page if new is called OR
 // render Show page of identified restaurant OR
 // render home page if no params are passed or restaurant is the first param
 router.get('/:page?', function(req, res, next) {
   var page = req.params.page;
-  var responseArray = [];
+  var resArray = [];
   if (!page) {
     pg.connect(connectionString, function(err, client, done) {
 
@@ -22,16 +23,24 @@ router.get('/:page?', function(req, res, next) {
         return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
       }
 
-      var query = client.query('select * from restaurants');
-      console.log(query);
-      query.on('row', function(row) {
-        responseArray.push(row);
+      var queryResInfo = client.query('select * from restaurants');
+      queryResInfo.on('row', function(row) {
+        resArray.push(row);
       });
-
-      query.on('end', function() {
-        res.render('index', {restaurants: responseArray});
+      queryResInfo.on('end', function() {
+        res.render('index', {restaurants: resArray});
         done();
       });
+      // var query = client.query('select * from restaurants');
+      // console.log(query);
+      // query.on('row', function(row) {
+      //   responseArray.push(row);
+      // });
+      //
+      // query.on('end', function() {
+      //   res.render('index', {restaurants: responseArray});
+      //   done();
+      // });
        pg.end();
     });
   } else if (page === 'restaurants') {
@@ -72,6 +81,7 @@ router.get('/restaurants/:id', function(req, res, next) {
   var id = req.params.id;
   var resArray = [];
   var reviewArray = [];
+
   pg.connect(connectionString, function(err, client, done) {
 
     if(err) {
@@ -153,7 +163,6 @@ router.post('/restaurants/:id/edit', function(req, res, next) {
       var value = updateRes[key];
       var query = client.query("update restaurants set " + key + "='" + value + "' " + "where id=" + req.params.id);
       query.on('end', function() {
-        console.log('You made it this far!');
         done();
       });
       }
@@ -164,7 +173,7 @@ router.post('/restaurants/:id/edit', function(req, res, next) {
 
 router.get('/restaurants/:id/reviews/new', function(req, res, next) {
   var id = req.params.id;
-  var responseArray = [];
+  var resArray = [];
   pg.connect(connectionString, function(err, client, done) {
 
     if(err) {
@@ -173,33 +182,58 @@ router.get('/restaurants/:id/reviews/new', function(req, res, next) {
       return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
     }
 
-    var query = client.query('select * from restaurants where id=' + id);
-    query.on('row', function(row) {
-      responseArray.push(row);
+    var queryResInfo = client.query('select * from restaurants where id=' + id);
+    queryResInfo.on('row', function(row) {
+      resArray.push(row);
     });
-
-    query.on('end', function() {
-      console.log(responseArray);
-      res.render('reviews/new', {restaurants: responseArray[0]});
+    queryResInfo.on('end', function() {
+      res.render('reviews/new', {restaurants: resArray[0]});
       done();
     });
-     pg.end();
+    pg.end();
   });
 });
 
 router.post('/restaurants/:id/reviews', function(req, res, next) {
+  function findAvg (array) {
+    reviewArray.forEach(function(el, ind, arr) {
+      return ratingAvg += el.rating;
+    });
+    ratingAvg = (ratingAvg / array.length);
+    ratingAvg = (Math.round(ratingAvg * 2)/2).toFixed(1);
+  }
+
   var newRev = req.body;
-  console.log(newRev);
   ratingInt = Number(newRev.rating);
+  var reviewArray = [];
+  var ratingAvg = 0;
+
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
       done();
       return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
     }
-    var queryPOST = client.query("insert into reviews (res_id, rev_name, rev_date, rating, review) values (" + req.params.id + ", '" + newRev.revName + "', '" + newRev.revDate + "', " + ratingInt + ", '" + newRev.review + "')");
-    queryPOST.on('end', function() {
-      res.redirect('/restaurants/' + req.params.id);
+
+    var queryPOSTRev = client.query("insert into reviews (res_id, rev_name, rev_date, rating, review) values (" + req.params.id + ", '" + newRev.revName + "', '" + newRev.revDate + "', " + ratingInt + ", '" + newRev.review + "')");
+    queryPOSTRev.on('end', function() {
+      done();
     });
+
+    var queryRevs = client.query('select rating from reviews where res_id=' + req.params.id);
+    queryRevs.on('row', function(row) {
+      reviewArray.push(row);
+    });
+
+    queryRevs.on('end', function() {
+      findAvg(reviewArray);
+      console.log(ratingAvg);
+      var queryUpdResRat = client.query('update restaurants set rating=' + ratingAvg + ' where id=' + req.params.id);
+      queryUpdResRat.on('end', function() {
+        res.redirect('/restaurants/' + req.params.id);
+        done();
+      });
+    });
+
     pg.end();
   });
 });
