@@ -57,7 +57,7 @@ router.get('/restaurants/:id/edit', function(req, res, next) {
 
     query.on('end', function() {
       console.log(responseArray);
-      res.render('edit', {restaurants: responseArray[0]});
+      res.render('restaurants/edit', {restaurants: responseArray[0]});
       done();
     });
      pg.end();
@@ -65,7 +65,7 @@ router.get('/restaurants/:id/edit', function(req, res, next) {
 });
 
 router.get('/restaurants/new', function(req, res, next) {
-  res.render('new');
+  res.render('restaurants/new');
 });
 
 router.get('/restaurants/:id', function(req, res, next) {
@@ -86,7 +86,7 @@ router.get('/restaurants/:id', function(req, res, next) {
 
     query.on('end', function() {
       console.log(responseArray);
-      res.render('show', {restaurants: responseArray[0]});
+      res.render('restaurants/show', {restaurants: responseArray[0]});
       done();
     });
      pg.end();
