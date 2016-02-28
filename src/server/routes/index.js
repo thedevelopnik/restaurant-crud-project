@@ -84,14 +84,17 @@ router.get('/restaurants/:id', function(req, res, next) {
     queryResInfo.on('row', function(row) {
       resArray.push(row);
     });
+    queryResInfo.on('end', function() {
+      done();
+    });
+
     var queryRevs = client.query('select * from reviews where res_id=' + id);
     queryRevs.on('row', function(row) {
       reviewArray.push(row);
     });
 
-    query.on('end', function() {
-      console.log(responseArray);
-      res.render('restaurants/show', {restaurants: responseArray[0], reviews: reviewArray});
+    queryRevs.on('end', function() {
+      res.render('restaurants/show', {restaurants: resArray[0], reviews: reviewArray});
       done();
     });
      pg.end();
