@@ -70,7 +70,8 @@ router.get('/restaurants/new', function(req, res, next) {
 
 router.get('/restaurants/:id', function(req, res, next) {
   var id = req.params.id;
-  var responseArray = [];
+  var resArray = [];
+  var reviewArray = [];
   pg.connect(connectionString, function(err, client, done) {
 
     if(err) {
@@ -79,14 +80,18 @@ router.get('/restaurants/:id', function(req, res, next) {
       return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
     }
 
-    var query = client.query('select * from restaurants where id=' + id);
-    query.on('row', function(row) {
-      responseArray.push(row);
+    var queryResInfo = client.query('select * from restaurants where id=' + id);
+    queryResInfo.on('row', function(row) {
+      resArray.push(row);
+    });
+    var queryRevs = client.query('select * from reviews where res_id=' + id);
+    queryRevs.on('row', function(row) {
+      reviewArray.push(row);
     });
 
     query.on('end', function() {
       console.log(responseArray);
-      res.render('restaurants/show', {restaurants: responseArray[0]});
+      res.render('restaurants/show', {restaurants: responseArray[0], reviews: reviewArray});
       done();
     });
      pg.end();
