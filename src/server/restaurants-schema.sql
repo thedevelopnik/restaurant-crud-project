@@ -10,3 +10,11 @@ create table restaurants
     rating integer,
     image varchar(255),
     descrip varchar(1000));
+
+create table reviews
+  (id serial primary key,
+    res_id integer references restaurants(id),
+    rev_name varchar(30),
+    rev_date varchar(255),
+    rating integer,
+    review varchar(1000));

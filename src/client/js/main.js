@@ -1,8 +1,6 @@
 // add scripts
 
-$(document).on('ready', function() {
-  console.log('sanity check!');
-});
+document.getElementById('date-picker').valueAsDate = new Date();
 
 function delRes () {
   var thisUrl = window.location.href;
