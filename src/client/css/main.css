@@ -11,3 +11,7 @@
   max-width: 100px;
   margin-bottom: 10px;
 }
+
+.float-right {
+  float: right;
+}

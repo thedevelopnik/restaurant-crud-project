@@ -63,6 +63,21 @@
           </div>
         </div>
       </section>
+
+      <section class='col-md-6'>
+        {% for revs in reviews %}
+        <div class='panel panel-default'>
+          <div class='panel-heading'>
+            <p>{{ revs.rev_name }}<span class='float-right'>{{ revs.rev_date}}</span></p>
+          </div>
+          <div class='panel-body'>
+            <p>{{ revs.review }}</p>
+            <div class="rateit" data-rateit-value="{{ revs.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+            <a class='float-right' href='/restaurants/{{ restaurants.id }}/reviews/{{ revs.id }}/edit'>Edit</a>
+          </div>
+        </div>
+        {% endfor %}
+      </section>
     </div>
 
   </div>
