@@ -3,7 +3,7 @@ var router = express.Router();
 var pg = require('pg');
 var Promise = require('bluebird');
 Promise.promisifyAll(pg);
-var connectionString = 'postgres://localhost:5432/gTables';
+var connectionString = 'postgres://nibqwnxjuzmgcq:l8Fg8svajzaJ2VW_oXQAiEC2v1@ec2-107-21-229-87.compute-1.amazonaws.com:5432/derbheuj1neeo1';
 
 
 
@@ -151,7 +151,6 @@ router.post('/restaurants', function(req, res, next) {
 router.post('/restaurants/:id/edit', function(req, res, next) {
   console.log('made it into the edit backend');
   var updateRes = req.body;
-  console.log(updateRes);
   var resVars = Object.keys(updateRes);
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
@@ -218,6 +217,78 @@ router.post('/restaurants/:id/reviews', function(req, res, next) {
     queryPOSTRev.on('end', function() {
       done();
     });
+
+    var queryRevs = client.query('select rating from reviews where res_id=' + req.params.id);
+    queryRevs.on('row', function(row) {
+      reviewArray.push(row);
+    });
+
+    queryRevs.on('end', function() {
+      findAvg(reviewArray);
+      console.log(ratingAvg);
+      var queryUpdResRat = client.query('update restaurants set rating=' + ratingAvg + ' where id=' + req.params.id);
+      queryUpdResRat.on('end', function() {
+        res.redirect('/restaurants/' + req.params.id);
+        done();
+      });
+    });
+
+    pg.end();
+  });
+});
+
+router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
+  var reviewArray = [];
+  var resId = req.params.id;
+  var reviewId = req.params.reviewid;
+
+  pg.connect(connectionString, function(err, client, done) {
+    if(err) {
+      done();
+      return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
+    }
+    var queryRevs = client.query('select * from reviews where res_id=' + resId + 'and id=' + reviewId);
+    queryRevs.on('row', function(row) {
+      reviewArray.push(row);
+    });
+
+    queryRevs.on('end', function() {
+      res.render('reviews/edit', {review: reviewArray[0]});
+    });
+
+    pg.end();
+  });
+});
+
+router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
+  function findAvg (array) {
+    reviewArray.forEach(function(el, ind, arr) {
+      return ratingAvg += el.rating;
+    });
+    ratingAvg = (ratingAvg / array.length);
+    ratingAvg = (Math.round(ratingAvg * 2)/2).toFixed(1);
+  }
+
+  var updateReview = req.body;
+  var reviewVars = Object.keys(updateReview);
+  ratingInt = Number(updateReview.rating);
+  var reviewArray = [];
+  var ratingAvg = 0;
+
+  pg.connect(connectionString, function(err, client, done) {
+    if(err) {
+      done();
+      return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
+    }
+
+    for (i = 0; i < reviewVars.length; i++) {
+      var key = reviewVars[i];
+      var value = updateReview[key];
+      var query = client.query("update reviews set " + key + "='" + value + "' " + "where id=" + req.params.reviewid);
+      query.on('end', function() {
+        done();
+      });
+    }
 
     var queryRevs = client.query('select rating from reviews where res_id=' + req.params.id);
     queryRevs.on('row', function(row) {
