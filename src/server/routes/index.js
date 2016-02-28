@@ -6,11 +6,7 @@ Promise.promisifyAll(pg);
 var connectionString = 'postgres://localhost:5432/gTables';
 
 
-
-// render restaurant edit page of identified restaurant OR
-// render restaurant new page if new is called OR
-// render Show page of identified restaurant OR
-// render home page if no params are passed or restaurant is the first param
+// render index if there is no parameter, redirect to index if the parameter is 'restaurant'
 router.get('/:page?', function(req, res, next) {
   var page = req.params.page;
   var resArray = [];
@@ -31,16 +27,6 @@ router.get('/:page?', function(req, res, next) {
         res.render('index', {restaurants: resArray});
         done();
       });
-      // var query = client.query('select * from restaurants');
-      // console.log(query);
-      // query.on('row', function(row) {
-      //   responseArray.push(row);
-      // });
-      //
-      // query.on('end', function() {
-      //   res.render('index', {restaurants: responseArray});
-      //   done();
-      // });
        pg.end();
     });
   } else if (page === 'restaurants') {
@@ -48,6 +34,8 @@ router.get('/:page?', function(req, res, next) {
   }
 });
 
+
+//render a restaurant's edit page if that restaurant's id is in the url with edit
 router.get('/restaurants/:id/edit', function(req, res, next) {
   var id = req.params.id;
   var responseArray = [];
@@ -73,10 +61,14 @@ router.get('/restaurants/:id/edit', function(req, res, next) {
   });
 });
 
+
+// render the new page
 router.get('/restaurants/new', function(req, res, next) {
   res.render('restaurants/new');
 });
 
+
+// render the show page for a particular restaurant
 router.get('/restaurants/:id', function(req, res, next) {
   var id = req.params.id;
   var resArray = [];
@@ -111,6 +103,8 @@ router.get('/restaurants/:id', function(req, res, next) {
   });
 });
 
+
+//delete a restaurant
 router.delete('/restaurants/:id', function(req, res, next) {
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
@@ -128,6 +122,8 @@ router.delete('/restaurants/:id', function(req, res, next) {
   });
 });
 
+
+//add a new restaurant when the submit button is clicked on the new res page
 router.post('/restaurants', function(req, res, next) {
   var newRes = req.body;
   pg.connect(connectionString, function(err, client, done) {
@@ -148,6 +144,8 @@ router.post('/restaurants', function(req, res, next) {
   });
 });
 
+
+//update the database when the submit button is clicked on the edit page
 router.post('/restaurants/:id/edit', function(req, res, next) {
   console.log('made it into the edit backend');
   var updateRes = req.body;
@@ -170,6 +168,8 @@ router.post('/restaurants/:id/edit', function(req, res, next) {
   });
 });
 
+
+//render the new review page for a restaurant
 router.get('/restaurants/:id/reviews/new', function(req, res, next) {
   var id = req.params.id;
   var resArray = [];
@@ -193,6 +193,8 @@ router.get('/restaurants/:id/reviews/new', function(req, res, next) {
   });
 });
 
+
+//add a review to the database when the submit button is clicked on a new review
 router.post('/restaurants/:id/reviews', function(req, res, next) {
   function findAvg (array) {
     reviewArray.forEach(function(el, ind, arr) {
@@ -237,6 +239,8 @@ router.post('/restaurants/:id/reviews', function(req, res, next) {
   });
 });
 
+
+// render the edit page for a particular review
 router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
   var reviewArray = [];
   var resId = req.params.id;
@@ -260,6 +264,8 @@ router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
   });
 });
 
+
+// update the database when an edited review is submitted
 router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
   function findAvg (array) {
     reviewArray.forEach(function(el, ind, arr) {
