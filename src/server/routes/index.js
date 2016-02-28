@@ -181,18 +181,14 @@ router.get('/restaurants/:id/reviews/new', function(req, res, next) {
 
 router.post('/restaurants/:id/reviews', function(req, res, next) {
   var newRev = req.body;
+  console.log(newRev);
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
       done();
       return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
     }
-    var responseArray = [];
-    var queryGET = client.query("select id from restaurants");
-    queryGET.on('row', function(row) {
-      responseArray.push(row);
-    });
     var queryPOST = client.query("insert into reviews (res_id, rev_name, rev_date, review) values (" + req.params.id + ", '" + newRev.revName + "', '" + newRev.revDate + "', " + newRev.rating + ", '" + newRev.review + "')");
-    queryGET.on('end', function() {
+    queryPOST.on('end', function() {
       res.redirect('/restaurants/' + req.params.id);
     });
     pg.end();

@@ -18,3 +18,9 @@ function delRes () {
 $('#delete-res').on('click', function(e){
   delRes();
 });
+
+$('#rateit1').on('click', function() {
+  var ratingVal = $('#rateit1').rateit('value');
+  console.log(ratingVal);
+  $('#backing2').attr('value', ratingVal);
+});
