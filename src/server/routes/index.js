@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var Promise = require('bluebird');
-Promise.promisifyAll(pg);
 var connectionString = 'postgres://localhost:5432/gTables';
 
 
