@@ -10,7 +10,7 @@ var pg = require('pg');
 
 
 // *** routes *** //
-var routes = require('./routes/index.js');
+var routes = require('./routes/routes.js');
 
 
 // *** express instance *** //
