@@ -23,58 +23,58 @@ router.get('/:page?', function(req, res, next) {
 
 // render the new page
 router.get('/restaurants/new', function(req, res, next) {
-  renderNewRes();
+  renderNewRes(req, res, next, pg, connectionString);
 });
 
 // render the show page for a particular restaurant
 router.get('/restaurants/:id', function(req, res, next) {
-  renderShowRes();
+  renderShowRes(req, res, next, pg, connectionString);
 });
 
 //render a restaurant's edit page if that restaurant's id is in the url with edit
 router.get('/restaurants/:id/edit', function(req, res, next) {
-  renderEditRes();
+  renderEditRes(req, res, next, pg, connectionString);
 });
 
 //delete a restaurant
 router.delete('/restaurants/:id', function(req, res, next) {
-  deleteRes();
+  deleteRes(req, res, next, pg, connectionString);
 });
 
 
 //add a new restaurant when the submit button is clicked on the new res page
 router.post('/restaurants', function(req, res, next) {
-  addRes();
+  addRes(req, res, next, pg, connectionString);
 });
 
 
 //update the database when the submit button is clicked on the edit page
 router.post('/restaurants/:id/edit', function(req, res, next) {
-  updateRes();
+  updateRes(req, res, next, pg, connectionString);
 });
 
 
 //render the new review page for a restaurant
 router.get('/restaurants/:id/reviews/new', function(req, res, next) {
-  renderNewReview(req, res, next);
+  renderNewReview(req, res, next, pg, connectionString);
 });
 
 
 //add a review to the database when the submit button is clicked on a new review
 router.post('/restaurants/:id/reviews', function(req, res, next) {
-  addReview();
+  addReview(req, res, next, pg, connectionString);
 });
 
 
 // render the edit page for a particular review
 router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
-  renderEditReview();
+  renderEditReview(req, res, next, pg, connectionString);
 });
 
 
 // update the database when an edited review is submitted
 router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
-  updateReview();
+  updateReview(req, res, next, pg, connectionString);
 });
 
 module.exports = router;

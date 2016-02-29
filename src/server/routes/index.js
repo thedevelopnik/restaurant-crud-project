@@ -1,6 +1,7 @@
 require('dotenv').config();
 module.exports = function(req, res, next, pg, db) {
   var page = req.params.page;
+  console.log('what is page' + page);
   var resArray = [];
   if (!page) {
     pg.connect(db, function(err, client, done) {
