@@ -28,10 +28,10 @@
     </nav>
 
     <div class='row'>
-      <section class='col-md-6'>
+      <section class='col-md-6 col sm-6 col-xs-12'>
         <img class='show-img' src='{{ restaurants.image }}' />
       </section>
-      <section class='col-md-6'>
+      <section class='col-md-6 col-sm-6 col-xs-12'>
         <div class='panel panel-default'>
           <div class='panel-body'>
             <p>
@@ -46,9 +46,9 @@
             <div class="rateit" data-rateit-value="{{ restaurants.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
           </div>
         </div>
-        <a class='btn btn-lg btn-success' href='/restaurants/{{ restaurants.id }}/edit'>Edit</a>
-        <button id='delete-res' class='btn btn-lg btn-danger'>Delete</button>
-        <a class='btn btn-lg btn-info' href='/restaurants/{{ restaurants.id }}/reviews/new'>Add a Review</a>
+        <a class='btn btn-lg btn-success show-btn' href='/restaurants/{{ restaurants.id }}/edit'>Edit</a>
+        <button id='delete-res' class='btn btn-lg btn-danger show-btn'>Delete</button>
+        <a class='btn btn-lg btn-info show-btn' href='/restaurants/{{ restaurants.id }}/reviews/new'>Add a Review</a>
       </section>
     </div>
 

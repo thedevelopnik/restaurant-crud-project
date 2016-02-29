@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = 'postgres://localhost:5432/gTables';
+require('dotenv').config();
+var connectionString = process.env.DATABASE_URL;
 
 
 // render index if there is no parameter, redirect to index if the parameter is 'restaurant'
