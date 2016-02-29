@@ -315,3 +315,21 @@ router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
 });
 
 module.exports = router;
+
+// var promise = new Promise (function(resolve, reject) {
+//   var queryRevs = client.query('select rating from reviews where res_id=' + req.params.id);
+//   queryRevs.on('row', function(row) {
+//     reviewArray.push(row);
+//   });
+//   queryRevs.on('end', function() {
+//     return reviewArray;
+//   });
+// }).then(function(array) {
+//   return findAvg(array);
+// }).then(function(num) {
+//   var queryUpdResRat = client.query('update restaurants set rating=' + num + ' where id=' + req.params.id);
+//   queryUpdResRat.on('end', function() {
+//     res.redirect('/restaurants/' + req.params.id);
+//     done();
+//   });
+// });
