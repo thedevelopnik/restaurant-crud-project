@@ -1,27 +1,15 @@
-var knex = require('../knex');
-module.exports = function(req, res, next, pg, db) {
+module.exports = function(req, res, next, knex) {
   var page = req.params.page;
   console.log('what is page' + page);
   var resArray = [];
   if (!page) {
-    pg.connect(db, function(err, client, done) {
-
-      if(err) {
-        console.log(err);
-        done();
-        return res.status(500).json({status: 'error',message: err});
-      }
-
-      var queryResInfo = client.query('select * from restaurants');
-      queryResInfo.on('row', function(row) {
-        resArray.push(row);
-      });
-
-      queryResInfo.on('end', function() {
-        res.render('index', {restaurants: resArray});
-        done();
-      });
-       pg.end();
+    knex('restaurants').select()
+    .then(function(data) {
+      res.render('index', {restaurants: data});
+    })
+    .catch(function(err) {
+      console.log(err);
+      return res.status(500).json({status: 'error',message: err});
     });
   } else if (page === 'restaurants') {
     res.redirect('/');
