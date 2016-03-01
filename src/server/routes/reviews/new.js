@@ -1,22 +1,10 @@
 module.exports = function (req, res, next, knex) {
   var id = req.params.id;
-  var resArray = [];
-  pg.connect(db, function(err, client, done) {
+  var resInfo;
 
-    if(err) {
-      console.log(err);
-      done();
-      return res.status(500).json({status: 'error',message: 'Something didn\'t work'});
-    }
-
-    var queryResInfo = client.query('select * from restaurants where id=' + id);
-    queryResInfo.on('row', function(row) {
-      resArray.push(row);
+  knex('restaurants').where('id', id)
+    .then(function(data) {
+      resInfo = data[0];
+      res.render('reviews/new', {restaurants: resInfo});
     });
-    queryResInfo.on('end', function() {
-      res.render('reviews/new', {restaurants: resArray[0]});
-      done();
-    });
-    pg.end();
-  });
 };
