@@ -87,7 +87,7 @@ gulp.task('watch', function() {
 
 gulp.task('clean', function() {
   return gulp.src('./dist/*')
-    .pipe(rimraf({force: true}));
+    .pipe(clean({force: true}));
 });
 
 gulp.task('minify-css', function() {
@@ -133,6 +133,6 @@ gulp.task('default', ['browser-sync', 'watch'], function(){});
 gulp.task('build', function() {
   runSequence(
     ['clean'],
-    ['lint', 'clean-css', 'minify-js', 'copy-server-files', 'connectDist']
+    ['lint', 'clean', 'minify-js', 'copy-server-files', 'connectDist']
   );
 });
