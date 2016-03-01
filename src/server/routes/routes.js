@@ -36,7 +36,7 @@ router.get('/restaurants/:id/edit', function(req, res, next) {
 });
 
 //delete a restaurant
-router.delete('/restaurants/:id', function(req, res, next) {
+router.get('/restaurants/:id/delete', function(req, res, next) {
   deleteRes(req, res, next, knex);
 });
 

@@ -1,16 +1,6 @@
 module.exports = function (req, res, next, knex) {
-  pg.connect(db, function(err, client, done) {
-    if(err) {
-      res.status(500).json({status: 'error',message: 'Something didn\'t work'});
-      done();
-
-    }
-    var query = client.query('delete from restaurants where id=' + req.params.id);
-
-    query.on('end', function() {
-      res.status(200).json({status: 'success', message: 'You deleted the restaurant!'});
-      done();
+  knex('restaurants').where('id', req.params.id).del()
+    .then(function (data) {
+      res.redirect('/');
     });
-    pg.end();
-  });
 };
