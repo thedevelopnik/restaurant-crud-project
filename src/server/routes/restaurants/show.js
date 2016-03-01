@@ -1,4 +1,4 @@
-module.exports = function (req, res, next, pg, db) {
+module.exports = function (req, res, next, knex) {
   var id = req.params.id;
   var resArray = [];
   var reviewArray = [];

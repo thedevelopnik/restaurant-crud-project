@@ -1,4 +1,4 @@
-module.exports = function (req, res, next, pg, db) {
+module.exports = function (req, res, next, knex) {
   pg.connect(db, function(err, client, done) {
     if(err) {
       res.status(500).json({status: 'error',message: 'Something didn\'t work'});

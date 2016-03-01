@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-require('dotenv').config();
+var knex = require('../knex');
 var renderNewRes = require('./restaurants/new.js');
 var renderIndex = require('./index.js');
 var renderShowRes = require('./restaurants/show.js');
@@ -13,38 +13,37 @@ var renderNewReview = require('./reviews/new.js');
 var addReview = require('./reviews/add.js');
 var renderEditReview = require('./reviews/edit.js');
 var updateReview = require('./reviews/update.js');
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/gTables';
 
 
 // render index if there is no parameter, redirect to index if the parameter is 'restaurant'
 router.get('/:page?', function(req, res, next) {
-  renderIndex(req, res, next, pg, connectionString);
+  renderIndex(req, res, next, knex);
 });
 
 // render the new page
 router.get('/restaurants/new', function(req, res, next) {
-  renderNewRes(req, res, next, pg, connectionString);
+  renderNewRes(req, res, next, knex);
 });
 
 // render the show page for a particular restaurant
 router.get('/restaurants/:id', function(req, res, next) {
-  renderShowRes(req, res, next, pg, connectionString);
+  renderShowRes(req, res, next, knex);
 });
 
 //render a restaurant's edit page if that restaurant's id is in the url with edit
 router.get('/restaurants/:id/edit', function(req, res, next) {
-  renderEditRes(req, res, next, pg, connectionString);
+  renderEditRes(req, res, next, knex);
 });
 
 //delete a restaurant
 router.delete('/restaurants/:id', function(req, res, next) {
-  deleteRes(req, res, next, pg, connectionString);
+  deleteRes(req, res, next, knex);
 });
 
 
 //add a new restaurant when the submit button is clicked on the new res page
 router.post('/restaurants', function(req, res, next) {
-  addRes(req, res, next, pg, connectionString);
+  addRes(req, res, next, knex);
 });
 
 

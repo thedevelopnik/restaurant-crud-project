@@ -1,4 +1,4 @@
-module.exports = function (req, res, next, pg, db) {
+module.exports = function (req, res, next, knex) {
   function findAvg (array) {
     reviewArray.forEach(function(el, ind, arr) {
       return ratingAvg += el.rating;

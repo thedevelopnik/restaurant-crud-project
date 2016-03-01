@@ -1,4 +1,4 @@
-module.exports = function (req, res, next, pg, db) {
+module.exports = function (req, res, next, knex) {
   var newRes = req.body;
   pg.connect(db, function(err, client, done) {
     if(err) {

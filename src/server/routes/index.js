@@ -1,4 +1,4 @@
-require('dotenv').config();
+var knex = require('../knex');
 module.exports = function(req, res, next, pg, db) {
   var page = req.params.page;
   console.log('what is page' + page);

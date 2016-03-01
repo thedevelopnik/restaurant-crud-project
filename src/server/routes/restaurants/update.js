@@ -1,4 +1,4 @@
-module.exports = function (req, res, next, pg, db) {
+module.exports = function (req, res, next, knex) {
   console.log('made it into the edit backend');
   var updateRes = req.body;
   var resVars = Object.keys(updateRes);
