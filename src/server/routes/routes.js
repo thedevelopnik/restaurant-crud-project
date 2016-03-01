@@ -49,49 +49,31 @@ router.post('/restaurants', function(req, res, next) {
 
 //update the database when the submit button is clicked on the edit page
 router.post('/restaurants/:id/edit', function(req, res, next) {
-  updateRes(req, res, next, pg, connectionString);
+  updateRes(req, res, next, knex);
 });
 
 
 //render the new review page for a restaurant
 router.get('/restaurants/:id/reviews/new', function(req, res, next) {
-  renderNewReview(req, res, next, pg, connectionString);
+  renderNewReview(req, res, next, knex);
 });
 
 
 //add a review to the database when the submit button is clicked on a new review
 router.post('/restaurants/:id/reviews', function(req, res, next) {
-  addReview(req, res, next, pg, connectionString);
+  addReview(req, res, next, knex);
 });
 
 
 // render the edit page for a particular review
 router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
-  renderEditReview(req, res, next, pg, connectionString);
+  renderEditReview(req, res, next, knex);
 });
 
 
 // update the database when an edited review is submitted
 router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
-  updateReview(req, res, next, pg, connectionString);
+  updateReview(req, res, next, pg, knex);
 });
 
 module.exports = router;
-
-// var promise = new Promise (function(resolve, reject) {
-//   var queryRevs = client.query('select rating from reviews where res_id=' + req.params.id);
-//   queryRevs.on('row', function(row) {
-//     reviewArray.push(row);
-//   });
-//   queryRevs.on('end', function() {
-//     return reviewArray;
-//   });
-// }).then(function(array) {
-//   return findAvg(array);
-// }).then(function(num) {
-//   var queryUpdResRat = client.query('update restaurants set rating=' + num + ' where id=' + req.params.id);
-//   queryUpdResRat.on('end', function() {
-//     res.redirect('/restaurants/' + req.params.id);
-//     done();
-//   });
-// });
