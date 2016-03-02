@@ -14,6 +14,18 @@ var addReview = require('./reviews/add.js');
 var renderEditReview = require('./reviews/edit.js');
 var updateReview = require('./reviews/update.js');
 
+function findAvg (array) {
+  var ratingAvg = 0;
+  array.forEach(function(el, ind, arr) {
+    num = Number(el.rating);
+    return ratingAvg += num;
+  });
+  ratingAvg = (ratingAvg / array.length);
+  ratingAvg = (Math.round(ratingAvg * 2)/2).toFixed(1);
+  console.log('final avg is ' + ratingAvg);
+  return ratingAvg;
+}
+
 
 // render index if there is no parameter, redirect to index if the parameter is 'restaurant'
 router.get('/:page?', function(req, res, next) {
@@ -61,7 +73,7 @@ router.get('/restaurants/:id/reviews/new', function(req, res, next) {
 
 //add a review to the database when the submit button is clicked on a new review
 router.post('/restaurants/:id/reviews', function(req, res, next) {
-  addReview(req, res, next, knex);
+  addReview(req, res, next, knex, findAvg);
 });
 
 
