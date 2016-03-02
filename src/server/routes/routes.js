@@ -85,7 +85,7 @@ router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
 
 // update the database when an edited review is submitted
 router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
-  updateReview(req, res, next, pg, knex);
+  updateReview(req, res, next, knex, findAvg);
 });
 
 module.exports = router;

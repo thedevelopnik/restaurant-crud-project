@@ -1,7 +1,6 @@
 module.exports = function (req, res, next, knex) {
   var id = req.params.id;
   var updateRes = req.body;
-  console.log(updateRes)
 
   knex('restaurants').where('id', id)
     .update({
