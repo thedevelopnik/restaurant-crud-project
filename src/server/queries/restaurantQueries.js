@@ -20,5 +20,16 @@ module.exports = {
   },
   findAllReviews: function(id) {
     return knex('reviews').select().where('res_id', id);
+  },
+  upRes: function(updateRes, id) {
+    knex('restaurants').where('id', id)
+      .update({
+        name: updateRes.name,
+        city: updateRes.city,
+        state: updateRes.state,
+        cuisine: updateRes.cuisine,
+        image: updateRes.image,
+        descrip: updateRes.descrip
+      });
   }
 };

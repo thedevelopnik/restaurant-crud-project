@@ -4,15 +4,8 @@ module.exports = function (req, res, next, knex) {
   var id = req.params.id;
   var updateRes = req.body;
 
-  knex('restaurants').where('id', id)
-    .update({
-      name: updateRes.name,
-      city: updateRes.city,
-      state: updateRes.state,
-      cuisine: updateRes.cuisine,
-      image: updateRes.image,
-      descrip: updateRes.descrip
-    }).then(function(data) {
+  queries.upRes(updateRes, id)
+    .then(function(data) {
       res.redirect('/restaurants/' + id);
     });
 };
