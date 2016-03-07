@@ -7,6 +7,10 @@ module.exports = function (req, res, next, cb) {
   var rating;
 
   queries.insertRev(id, newRev, ratingInt)
+    .catch(function(err) {
+      req.flash('danger', err.detail);
+      res.redirect('/restaurants/' + id + '/reviews/new');
+    })
     .then(function() {
         queries.getRating(id)
       .then(function(data) {

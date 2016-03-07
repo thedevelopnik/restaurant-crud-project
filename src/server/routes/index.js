@@ -4,7 +4,7 @@ module.exports = function(req, res, next) {
   var page = req.params.page;
   var resArray = [];
   if (!page) {
-    queries.AllRes()
+    queries.allRes()
     .then(function(data) {
       res.render('index', {restaurants: data});
     })

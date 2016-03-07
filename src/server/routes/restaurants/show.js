@@ -10,6 +10,7 @@ module.exports = function (req, res, next) {
       console.log(err);
     })
     .then(function(data) {
+      console.log(data);
       restaurantInfo = data;
     });
 

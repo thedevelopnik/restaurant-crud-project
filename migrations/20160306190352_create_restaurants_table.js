@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('restaurants', function(table) {
     table.increments();
-    table.string('name');
+    table.string('name').unique();
     table.string('cuisine');
     table.string('city');
     table.string('state', 2);
