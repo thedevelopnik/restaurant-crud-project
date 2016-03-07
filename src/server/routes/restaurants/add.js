@@ -12,5 +12,10 @@ module.exports = function (req, res, next) {
     console.log(data);
     var newId = data[0].id;
     res.redirect('/restaurants/' + newId);
+  }).catch(function(err) {
+    return req.flash('danger', 'You cannot enter the same restaurant twice.');
+  }).then(function() {
+    var flash = req.flash().danger;
+    res.render('restaurants/new', {messages: flash, restaurant: newRes});
   });
 };
