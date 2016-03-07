@@ -3,7 +3,7 @@ var queries = require('../../queries/restaurantQueries');
 module.exports = function (req, res, next, knex) {
   var id = req.params.id;
   var resInfo;
-  queries.editRes(id)
+  queries.findRes(id)
     .then(function(data) {
       resInfo = data[0];
     }).then(function(data) {

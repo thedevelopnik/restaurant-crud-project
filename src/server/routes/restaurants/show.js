@@ -5,7 +5,7 @@ module.exports = function (req, res, next, knex) {
   var restaurantInfo;
   var reviews;
 
-  knex('restaurants').select().where('id', id)
+  queries.findRes(id)
     .catch(function(err) {
       console.log(err);
     })

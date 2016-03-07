@@ -15,7 +15,7 @@ module.exports = {
   deleteRes: function(id) {
     return knex('restaurants').where('id', id).del();
   },
-  editRes: function(id) {
+  findRes: function(id) {
     return knex('restaurants').where('id', id);
   }
 };
