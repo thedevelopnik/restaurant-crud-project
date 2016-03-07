@@ -20,5 +20,17 @@ module.exports = {
       res_id: resId,
       id: reviewId
     });
+  },
+  upRev: function(id, revId, updateReview, ratingInt) {
+    return knex('reviews').where({
+      res_id: id,
+      id: revId})
+    .update({
+      res_id: id,
+      rev_name: updateReview.revName,
+      rev_date: updateReview.revDate,
+      rating: ratingInt,
+      review: updateReview.review
+    });
   }
 };
