@@ -1,3 +1,5 @@
+var queries = require('../../queries/reviewQueries');
+
 module.exports = function (req, res, next, knex) {
   var reviewInfo;
   var resId = req.params.id;

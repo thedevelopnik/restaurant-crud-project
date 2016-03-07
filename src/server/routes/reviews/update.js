@@ -1,3 +1,5 @@
+var queries = require('../../queries/reviewQueries');
+
 module.exports = function (req, res, next, knex, cb) {
 
   var updateReview = req.body;
