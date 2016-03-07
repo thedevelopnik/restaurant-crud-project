@@ -1,6 +1,6 @@
 var queries = require('../../queries/reviewQueries');
 
-module.exports = function (req, res, next, knex, cb) {
+module.exports = function (req, res, next, cb) {
   var id = req.params.id;
   var newRev = req.body;
   var ratingInt = Number(newRev.rating);

@@ -1,3 +1,5 @@
+var knex = require('../db/knex');
+
 module.exports = {
   insertRes: function(newRes) {
     return knex('restaurants').insert({

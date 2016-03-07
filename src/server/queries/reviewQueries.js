@@ -1,3 +1,5 @@
+var knex = require('../db/knex');
+
 module.exports = {
   insertRev: function(id, newRev, ratingInt) {
     return knex('reviews').insert({

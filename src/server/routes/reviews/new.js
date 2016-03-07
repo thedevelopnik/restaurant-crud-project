@@ -1,6 +1,6 @@
 var queries = require('../../queries/restaurantQueries');
 
-module.exports = function (req, res, next, knex) {
+module.exports = function (req, res, next) {
   var id = req.params.id;
   var resInfo;
 

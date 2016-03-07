@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var knex = require('../db/knex');
 var renderNewRes = require('./restaurants/new.js');
 var renderIndex = require('./index.js');
 var renderShowRes = require('./restaurants/show.js');
@@ -29,63 +28,63 @@ function findAvg (array) {
 
 // render index if there is no parameter, redirect to index if the parameter is 'restaurant'
 router.get('/:page?', function(req, res, next) {
-  renderIndex(req, res, next, knex);
+  renderIndex(req, res, next);
 });
 
 // render the new page
 router.get('/restaurants/new', function(req, res, next) {
-  renderNewRes(req, res, next, knex);
+  renderNewRes(req, res, next);
 });
 
 // render the show page for a particular restaurant
 router.get('/restaurants/:id', function(req, res, next) {
-  renderShowRes(req, res, next, knex);
+  renderShowRes(req, res, next);
 });
 
 //render a restaurant's edit page if that restaurant's id is in the url with edit
 router.get('/restaurants/:id/edit', function(req, res, next) {
-  renderEditRes(req, res, next, knex);
+  renderEditRes(req, res, next);
 });
 
 //delete a restaurant
 router.get('/restaurants/:id/delete', function(req, res, next) {
-  deleteRes(req, res, next, knex);
+  deleteRes(req, res, next);
 });
 
 
 //add a new restaurant when the submit button is clicked on the new res page
 router.post('/restaurants', function(req, res, next) {
-  addRes(req, res, next, knex);
+  addRes(req, res, next);
 });
 
 
 //update the database when the submit button is clicked on the edit page
 router.post('/restaurants/:id/edit', function(req, res, next) {
-  updateRes(req, res, next, knex);
+  updateRes(req, res, next);
 });
 
 
 //render the new review page for a restaurant
 router.get('/restaurants/:id/reviews/new', function(req, res, next) {
-  renderNewReview(req, res, next, knex);
+  renderNewReview(req, res, next);
 });
 
 
 //add a review to the database when the submit button is clicked on a new review
 router.post('/restaurants/:id/reviews', function(req, res, next) {
-  addReview(req, res, next, knex, findAvg);
+  addReview(req, res, next, findAvg);
 });
 
 
 // render the edit page for a particular review
 router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
-  renderEditReview(req, res, next, knex);
+  renderEditReview(req, res, next);
 });
 
 
 // update the database when an edited review is submitted
 router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
-  updateReview(req, res, next, knex, findAvg);
+  updateReview(req, res, next, findAvg);
 });
 
 module.exports = router;

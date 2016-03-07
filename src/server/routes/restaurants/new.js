@@ -1,3 +1,3 @@
-module.exports = function (req, res, next, knex) {
+module.exports = function (req, res, next) {
   res.render('restaurants/new');
 };

@@ -1,7 +1,7 @@
 var revQueries = require('../../queries/reviewQueries');
 var resQueries = require('../../queries/restaurantQueries');
 
-module.exports = function (req, res, next, knex, cb) {
+module.exports = function (req, res, next, cb) {
 
   var updateReview = req.body;
   var revId = req.params.reviewid;
