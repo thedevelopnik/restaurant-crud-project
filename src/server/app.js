@@ -39,6 +39,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.use(flash());
 app.use(express.static(path.join(__dirname, '../client')));
 
 

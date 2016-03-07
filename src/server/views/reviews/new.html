@@ -33,21 +33,15 @@
 
       <div class='col-md-10'>
         <form method='post'>
-          {% if !messages.length %}
-          <div class='form-group'>
-            <label for='revName'>Your Name</label>
-            <input type='text' name='revName' class='form-control' placeholder='Jane Smith' minlength='3' maxlength='20' required />
-          </div>
-          {% endif %}
-          {% if messages.length %}
+          {% if messages %}
           <div class='alert alert-danger'>
             {{ messages }}
           </div>
+          {% endif %}
           <div class='form-group'>
             <label for='revName'>Your Name</label>
             <input type='text' name='revName' class='form-control' placeholder='Jane Smith' minlength='3' maxlength='20' required />
           </div>
-          {% endif %}
           <div class='form-group'>
             <label for='revDate'>Date</label>
             <br />
