@@ -1,9 +1,10 @@
+var queries = require('../queries/restaurantQueries');
+
 module.exports = function(req, res, next, knex) {
   var page = req.params.page;
-  console.log('what is page' + page);
   var resArray = [];
   if (!page) {
-    knex('restaurants').select()
+    queries.AllRes()
     .then(function(data) {
       res.render('index', {restaurants: data});
     })

@@ -31,5 +31,8 @@ module.exports = {
         image: updateRes.image,
         descrip: updateRes.descrip
       });
+  },
+  allRes: function() {
+    return knex('restaurants').select();
   }
 };
