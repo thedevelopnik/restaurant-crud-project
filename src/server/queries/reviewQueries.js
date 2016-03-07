@@ -14,5 +14,11 @@ module.exports = {
   upRating: function(id, data) {
     knex('restaurants').where('id', id)
     .update('rating', data);
+  },
+  findRev: function(resId, reviewId) {
+    knex('reviews').where({
+      res_id: resId,
+      id: reviewId
+    });
   }
 };
