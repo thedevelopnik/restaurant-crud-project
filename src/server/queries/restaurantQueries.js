@@ -11,5 +11,11 @@ module.exports = {
   },
   getNewRes: function(newRes) {
     return knex('restaurants').select('id').where('name', newRes.name);
+  },
+  deleteRes: function(id) {
+    return knex('restaurants').where('id', id).del();
+  },
+  editRes: function(id) {
+    return knex('restaurants').where('id', id);
   }
 };
