@@ -1,4 +1,5 @@
-var queries = require('../../queries/reviewQueries');
+var revQueries = require('../../queries/reviewQueries');
+var resQueries = require('../../queries/restaurantQueries');
 
 module.exports = function (req, res, next, cb) {
   var id = req.params.id;
@@ -6,13 +7,13 @@ module.exports = function (req, res, next, cb) {
   var ratingInt = Number(newRev.rating);
   var rating;
 
-  queries.insertRev(id, newRev, ratingInt)
+  revQueries.insertRev(id, newRev, ratingInt)
     .then(function() {
-        queries.getRating(id)
+        revQueries.getRating(id)
       .then(function(data) {
         return cb(data);
       }).then(function(data) {
-        queries.upRating(id, data)
+        revQueries.upRating(id, data)
         .catch(function(err) {
         console.log(err);
         }).then(function(data) {
@@ -20,8 +21,14 @@ module.exports = function (req, res, next, cb) {
         });
       });
     }).catch(function(err) {
-      req.flash('danger', err.detail);
-      res.redirect('/restaurants/' + id + '/reviews/new');
-      console.log('I should have redirected already!');
+      return req.flash('danger', 'You can only leave one review per restaurant.');
+    }).then(function() {
+      var resInfo;
+      var flash = req.flash().danger;
+      resQueries.findRes(id)
+        .then(function(data) {
+          resInfo = data[0];
+          res.render('reviews/new', {restaurants: resInfo, messages: flash, review: newRev});
+        });
     });
 };
