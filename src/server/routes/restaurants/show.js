@@ -13,7 +13,7 @@ module.exports = function (req, res, next, knex) {
       restaurantInfo = data;
     });
 
-  knex('reviews').select().where('res_id', id)
+  queries.findAllReviews(id)
     .catch(function(err) {
       console.log(err);
     }).then(function(data) {

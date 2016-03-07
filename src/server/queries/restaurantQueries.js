@@ -17,5 +17,8 @@ module.exports = {
   },
   findRes: function(id) {
     return knex('restaurants').where('id', id);
+  },
+  findAllReviews: function(id) {
+    return knex('reviews').select().where('res_id', id);
   }
 };
