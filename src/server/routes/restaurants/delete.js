@@ -1,5 +1,7 @@
+var queries = require('../../queries/restaurantQueries');
+
 module.exports = function (req, res, next, knex) {
-  knex('restaurants').where('id', req.params.id).del()
+  queries.deleteRes(req.params.id)
     .then(function (data) {
       res.redirect('/');
     });
