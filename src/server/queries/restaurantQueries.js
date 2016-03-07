@@ -22,7 +22,7 @@ module.exports = {
     return knex('reviews').select().where('res_id', id);
   },
   upRes: function(updateRes, id) {
-    knex('restaurants').where('id', id)
+    return knex('restaurants').where('id', id)
       .update({
         name: updateRes.name,
         city: updateRes.city,
