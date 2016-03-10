@@ -90,7 +90,11 @@ router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
 
 // render login page when login link is clicked
 router.get('/login', function(req, res, next) {
-  res.render('login');
+  login.render(req, res, next);
+});
+
+router.post('/login', function(req, res, next) {
+  login.action(req, res, next);
 });
 
 module.exports = router;
