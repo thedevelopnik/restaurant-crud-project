@@ -4,6 +4,6 @@ module.exports = {
   },
 
   action: function (req, res, next) {
-
- }
+    
+  }
 };

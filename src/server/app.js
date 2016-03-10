@@ -9,7 +9,10 @@ var swig = require('swig');
 var pg = require('pg');
 var flash = require('connect-flash');
 var session = require('express-session');
-
+var Promise = require('bluebird');
+var passport = require('./lib/auth');
+var knex = require('../../db/knex');
+var cookieSession = require('cookie-session');
 
 // *** routes *** //
 var routes = require('./routes/routes.js');
@@ -34,13 +37,34 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cookieSession({
+  name: 'change_me',
+  keys: [process.env.KEY1, process.env.KEY2, process.env.KEY3]
+}));
+app.use(express.static(path.join(__dirname, '../client')));
 app.use(session({
   secret: process.env.SECRET_KEY || 'change_me',
   resave: false,
   saveUninitialized: true
 }));
 app.use(flash());
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// *** configure passport *** //
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  knex('users').where('id', id)
+    .then(function(data) {
+      return done(null, data[0]);
+    }).catch(function(err) {
+      return done(err, null);
+    });
+});
+
 
 
 // *** main routes *** //
