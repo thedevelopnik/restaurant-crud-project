@@ -29,6 +29,11 @@
   <div class='col-md-2'>
   </div>
   <div class='col-md-8'>
+    {% if messages.length > 0 %}
+      <div class='alert alert-danger'>
+        {{ messages }}
+      </div>
+    {% endif %}
     <form formaction='/login' class='form-signin' method='post'>
       <h2 class='form-signin-heading'>Please sign in</h2>
       <div class='form-group'>

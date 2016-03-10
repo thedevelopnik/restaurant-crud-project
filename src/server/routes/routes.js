@@ -13,6 +13,8 @@ var addReview = require('./reviews/add.js');
 var renderEditReview = require('./reviews/edit.js');
 var updateReview = require('./reviews/update.js');
 var login = require('./login');
+var passport = require('../lib/auth');
+var helpers = require('../lib/helpers');
 
 function findAvg (array) {
   var ratingAvg = 0;
@@ -93,8 +95,8 @@ router.get('/login', function(req, res, next) {
   login.render(req, res, next);
 });
 
-router.post('/login', function(req, res, next) {
-  login.action(req, res, next);
-});
+// login and redirect to home page when user clicks login submit
+router.post('/login',
+  passport.authenticate('local', {successRedirect: '/', successFlash: true, failureRedirect: '/login', failureFlash: true}));
 
 module.exports = router;

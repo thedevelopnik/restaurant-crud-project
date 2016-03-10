@@ -1,9 +1,5 @@
 module.exports = {
   render: function (req, res, next) {
-   res.render('login');
+   res.render('login', {messages: req.flash('error')});
   },
-
-  action: function (req, res, next) {
-    
-  }
 };

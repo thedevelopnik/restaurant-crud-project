@@ -5,10 +5,11 @@ module.exports = function(req, res, next) {
   var resArray = [];
     queries.allRes()
     .then(function(data) {
-      res.render('index', {restaurants: data});
+      console.log(req.flash());
+      res.render('index', {restaurants: data, user: req.user, messages: req.flash('success')});
     })
     .catch(function(err) {
       console.log(err);
-      return res.status(500).json({status: 'error',message: err});
+      return res.status(500).json({status: 'error', message: err});
     });
 };

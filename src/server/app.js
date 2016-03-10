@@ -11,7 +11,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var Promise = require('bluebird');
 var passport = require('./lib/auth');
-var knex = require('../../db/knex');
+var knex = require('./db/knex');
 var cookieSession = require('cookie-session');
 
 // *** routes *** //
@@ -50,20 +50,6 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-
-// *** configure passport *** //
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  knex('users').where('id', id)
-    .then(function(data) {
-      return done(null, data[0]);
-    }).catch(function(err) {
-      return done(err, null);
-    });
-});
 
 
 

@@ -30,6 +30,12 @@
 
 <div class='container-fluid'>
 
+  {% if messages.length > 0 %}
+      <div class='alert alert-success'>
+        {{messages}}
+      </div>
+    {% endif %}
+
   <main>
     {% for res in restaurants %}
     <a href='/restaurants/{{ res.id }}'>
