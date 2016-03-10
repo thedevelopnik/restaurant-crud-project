@@ -5,18 +5,33 @@
 
 {% block content %}
 
+<nav class='navbar navbar-default'>
+  <div class='container-fluid'>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">gTables</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class='container-fluid'>
   <form formaction='/login' class='form-signin' method='post'>
     <h2 class='form-signin-heading'>Please sign in</h2>
-    <label for="email" class="sr-only">Email address</label>
-    <input type="email" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
+    <label for="username" class="sr-only">Email address</label>
+    <input type="text" name="username" class="form-control" placeholder="jdoe123" required="" autofocus="">
     <label for="password" class="sr-only">Password</label>
     <input type="password" name="password" class="form-control" placeholder="Password" required="">
-    <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
     <input class="btn btn-lg btn-primary btn-block" type="submit" value='Sign In' />
   </form>
 </div>

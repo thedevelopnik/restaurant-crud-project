@@ -12,6 +12,7 @@ var renderNewReview = require('./reviews/new.js');
 var addReview = require('./reviews/add.js');
 var renderEditReview = require('./reviews/edit.js');
 var updateReview = require('./reviews/update.js');
+var login = require('./login');
 
 function findAvg (array) {
   var ratingAvg = 0;
@@ -27,7 +28,7 @@ function findAvg (array) {
 
 
 // render index if there is no parameter, redirect to index if the parameter is 'restaurant'
-router.get('/:page?', function(req, res, next) {
+router.get('/', function(req, res, next) {
   renderIndex(req, res, next);
 });
 
@@ -85,6 +86,11 @@ router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
 // update the database when an edited review is submitted
 router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
   updateReview(req, res, next, findAvg);
+});
+
+// render login page when login link is clicked
+router.get('/login', function(req, res, next) {
+  res.render('login');
 });
 
 module.exports = router;
