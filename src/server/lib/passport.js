@@ -10,16 +10,12 @@ passport.use(new LocalStrategy({
     knex('users').where('username', username)
       .then(function(data) {
         var user = data[0];
-        console.log(password, user.password);
         if (password === user.password) {
-          console.log('user:', user);
           return done(null, user, {message: 'You\'re logged in!'});
         } else {
           return done(null, false, {message: 'Incorrect password.'});
         }
     }).catch(function(err) {
-      console.log('into the knex catch');
-      console.log(err);
       return done(null, false, {message: 'Incorrect username.'});
     });
   }
