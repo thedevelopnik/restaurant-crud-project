@@ -19,6 +19,7 @@ module.exports = function (req, res, next) {
     }).then(function(data) {
       reviews = data;
     }).then(function(data) {
+      console.log(reviews[0].rev_date);
       res.render('restaurants/show', {restaurants: restaurantInfo[0], user: req.user, reviews: reviews});
     });
 };

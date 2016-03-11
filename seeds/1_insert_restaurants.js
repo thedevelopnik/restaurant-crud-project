@@ -2,6 +2,7 @@
 exports.seed = function(knex, Promise) {
   return Promise.join(
     // Deletes ALL existing entries
+    knex('reviews').del(),
     knex('restaurants').del(),
 
     // Inserts seed entries

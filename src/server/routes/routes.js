@@ -106,7 +106,6 @@ router.post('/login',
 
 router.get('/logout', function(req, res, next) {
   req.session = null;
-  req.flash('success', 'You have logged out!');
   res.redirect('/');
 });
 

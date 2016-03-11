@@ -50,7 +50,9 @@
         <a class='btn btn-lg btn-success show-btn' href='/restaurants/{{ restaurants.id }}/edit'>Edit</a>
         <a href='/restaurants/{{ restaurants.id }}/delete' id='delete-res' class='btn btn-lg btn-danger show-btn'>Delete</a>
         {% endif %}
+        {% if user %}
         <a class='btn btn-lg btn-info show-btn' href='/restaurants/{{ restaurants.id }}/reviews/new'>Add a Review</a>
+        {% endif %}
       </section>
     </div>
 
@@ -70,12 +72,14 @@
         {% for revs in reviews %}
         <div class='panel panel-default'>
           <div class='panel-heading'>
-            <p>{{ revs.rev_name }}<span class='float-right'>{{ revs.rev_date}}</span></p>
+            <p>{{ revs.rev_name }}<span class='float-right'>{{ revs.rev_date|date('m/d/Y') }}</span></p>
           </div>
           <div class='panel-body'>
             <p class='truncate'>{{ revs.review }}</p>
             <div class="rateit" data-rateit-value="{{ revs.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+            {% if user %}
             <a class='float-right' href='/restaurants/{{ restaurants.id }}/reviews/{{ revs.id }}/edit'>Edit</a>
+            {% endif %}
           </div>
         </div>
         {% endfor %}
