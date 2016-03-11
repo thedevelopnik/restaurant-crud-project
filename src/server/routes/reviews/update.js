@@ -11,8 +11,6 @@ module.exports = function (req, res, next, cb) {
 
   revQueries.upRev(id, revId, updateReview, ratingInt)
     .then(function(data) {
-      console.log(data);
-    }).then(function() {
       revQueries.getRating(id)
       .then(function(data) {
         return cb(data);

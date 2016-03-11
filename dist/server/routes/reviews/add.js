@@ -30,7 +30,6 @@ module.exports = function (req, res, next, pg, db) {
 
     queryRevs.on('end', function() {
       findAvg(reviewArray);
-      console.log(ratingAvg);
       var queryUpdResRat = client.query('update restaurants set rating=' + ratingAvg + ' where id=' + req.params.id);
       queryUpdResRat.on('end', function() {
         res.redirect('/restaurants/' + req.params.id);

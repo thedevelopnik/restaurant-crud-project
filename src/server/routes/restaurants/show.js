@@ -5,21 +5,27 @@ module.exports = function (req, res, next) {
   var restaurantInfo;
   var reviews;
 
-  queries.findRes(id)
-    .catch(function(err) {
-      console.log(err);
-    })
-    .then(function(data) {
-      restaurantInfo = data;
-    });
+  if (req.params.id === 'new') {
+    res.redirect('/new');
+  } else {
 
-  queries.findAllReviews(id)
-    .catch(function(err) {
-      console.log(err);
-    }).then(function(data) {
-      reviews = data;
-    }).then(function(data) {
-      console.log(reviews[0].rev_date);
-      res.render('restaurants/show', {restaurants: restaurantInfo[0], user: req.user, reviews: reviews});
-    });
+    queries.findRes(id)
+      .then(function(data) {
+        restaurantInfo = data;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+
+    queries.findAllReviews(id)
+      .then(function(data) {
+        reviews = data;
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+      .then(function(data) {
+        res.render('restaurants/show', {restaurants: restaurantInfo[0], user: req.user, reviews: reviews});
+      });
+  }
 };

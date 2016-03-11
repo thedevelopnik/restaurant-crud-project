@@ -9,7 +9,6 @@ module.exports = function (req, res, next) {
   .then(function(data) {
     queries.getNewRes(newRes);
   }).then(function(data) {
-    console.log(data);
     var newId = data[0].id;
     res.redirect('/restaurants/' + newId);
   }).catch(function(err) {

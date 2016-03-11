@@ -8,7 +8,7 @@ module.exports = {
     if(req.user) {
       // if so -> call next()
       return next();
-    } else {
+    } else if (!req.user) {
       // if not -> redirect to login
       req.flash('error', 'You need to login!');
       return res.redirect('/login');

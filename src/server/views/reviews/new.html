@@ -40,7 +40,7 @@
           {% endif %}
           <div class='form-group'>
             <label for='revName'>Your Name</label>
-            <input type='text' name='revName' class='form-control' {% if review %} value='{{ review.name }}' {% endif %} placeholder='Jane Smith' minlength='3' maxlength='20' required />
+            <input type='text' name='revName' class='form-control' {% if review %} value='{{ review.name }}' {% endif %} {% if user %} value='{{ user.first_name }} {{ user.last_name }}' {% endif %} placeholder='Jane Smith' minlength='3' maxlength='20' required />
           </div>
           <div class='form-group'>
             <label for='revDate'>Date</label>

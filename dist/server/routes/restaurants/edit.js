@@ -15,7 +15,6 @@ module.exports = function (req, res, next, pg, db) {
     });
 
     query.on('end', function() {
-      console.log(responseArray);
       res.render('restaurants/edit', {restaurants: responseArray[0]});
       done();
     });

@@ -24,7 +24,6 @@ function findAvg (array) {
   });
   ratingAvg = (ratingAvg / array.length);
   ratingAvg = (Math.round(ratingAvg * 2)/2).toFixed(1);
-  console.log('final avg is ' + ratingAvg);
   return ratingAvg;
 }
 
@@ -35,8 +34,7 @@ router.get('/', function(req, res, next) {
 });
 
 // render the new page
-router.get('/restaurants/new', function(req, res, next) {
-  helpers.ensureAdmin(req, res, next);
+router.get('/restaurants/new', helpers.ensureAdmin, function(req, res, next) {
   renderNewRes(req, res, next);
 });
 
@@ -46,56 +44,48 @@ router.get('/restaurants/:id', function(req, res, next) {
 });
 
 //render a restaurant's edit page if that restaurant's id is in the url with edit
-router.get('/restaurants/:id/edit', function(req, res, next) {
-  helpers.ensureAdmin(req, res, next);
+router.get('/restaurants/:id/edit', helpers.ensureAdmin, function(req, res, next) {
   renderEditRes(req, res, next);
 });
 
 //delete a restaurant
-router.get('/restaurants/:id/delete', function(req, res, next) {
-  helpers.ensureAdmin(req, res, next);
+router.get('/restaurants/:id/delete', helpers.ensureAdmin, function(req, res, next) {
   deleteRes(req, res, next);
 });
 
 
 //add a new restaurant when the submit button is clicked on the new res page
-router.post('/restaurants', function(req, res, next) {
-  helpers.ensureAdmin(req, res, next);
+router.post('/restaurants', helpers.ensureAdmin, function(req, res, next) {
   addRes(req, res, next);
 });
 
 
 //update the database when the submit button is clicked on the edit page
-router.post('/restaurants/:id/edit', function(req, res, next) {
-  helpers.ensureAdmin(req, res, next);
+router.post('/restaurants/:id/edit', helpers.ensureAdmin, function(req, res, next) {
   updateRes(req, res, next);
 });
 
 
 //render the new review page for a restaurant
-router.get('/restaurants/:id/reviews/new', function(req, res, next) {
-  helpers.ensureAuthenticated(req, res, next);
+router.get('/restaurants/:id/reviews/new', helpers.ensureAuthenticated, function(req, res, next) {
   renderNewReview(req, res, next);
 });
 
 
 //add a review to the database when the submit button is clicked on a new review
-router.post('/restaurants/:id/reviews', function(req, res, next) {
-  helpers.ensureAuthenticated(req, res, next);
+router.post('/restaurants/:id/reviews', helpers.ensureAuthenticated, function(req, res, next) {
   addReview(req, res, next, findAvg);
 });
 
 
 // render the edit page for a particular review
-router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
-  helpers.ensureAuthenticated();
+router.get('/restaurants/:id/reviews/:reviewid/edit', helpers.ensureAuthenticated, function(req, res, next) {
   renderEditReview(req, res, next);
 });
 
 
 // update the database when an edited review is submitted
-router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
-  helpers.ensureAuthenticated();
+router.post('/restaurants/:id/reviews/:reviewid', helpers.ensureAuthenticated, function(req, res, next) {
   updateReview(req, res, next, findAvg);
 });
 

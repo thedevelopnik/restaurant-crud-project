@@ -1,5 +1,4 @@
 module.exports = function (req, res, next, pg, db) {
-  console.log('made it into the edit backend');
   var updateRes = req.body;
   var resVars = Object.keys(updateRes);
   pg.connect(db, function(err, client, done) {
