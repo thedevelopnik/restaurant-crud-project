@@ -9,10 +9,10 @@ passport.use(new LocalStrategy({
   function(username, password, done) {
     knex('users').where('username', username)
       .then(function(data) {
-        console.log('into the knex promise');
-        console.log(data);
         var user = data[0];
+        console.log(password, user.password);
         if (password === user.password) {
+          console.log('user:', user);
           return done(null, user, {message: 'You\'re logged in!'});
         } else {
           return done(null, false, {message: 'Incorrect password.'});

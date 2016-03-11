@@ -1,11 +1,13 @@
+require('dotenv').config();
+
 module.exports = {
   development: {
     client: 'pg',
-    connection: 'postgres://localhost:5432/gTables'
+    connection: process.env.DEV_DB
   },
 
   production: {
     client: 'pg',
-    connection: 'postgres://nibqwnxjuzmgcq:l8Fg8svajzaJ2VW_oXQAiEC2v1@ec2-107-21-229-87.compute-1.amazonaws.com:5432/derbheuj1neeo1?ssl=true'
+    connection: process.env.PROD_DB
   }
 };

@@ -13,7 +13,7 @@ var addReview = require('./reviews/add.js');
 var renderEditReview = require('./reviews/edit.js');
 var updateReview = require('./reviews/update.js');
 var login = require('./login');
-var passport = require('../lib/auth');
+var passport = require('../lib/passport');
 var helpers = require('../lib/helpers');
 
 function findAvg (array) {

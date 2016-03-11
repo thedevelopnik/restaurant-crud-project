@@ -3,9 +3,9 @@ var queries = require('../queries/restaurantQueries');
 module.exports = function(req, res, next) {
   var page = req.params.page;
   var resArray = [];
+  console.log(req.user);
     queries.allRes()
     .then(function(data) {
-      console.log(req.flash());
       res.render('index', {restaurants: data, user: req.user, messages: req.flash('success')});
     })
     .catch(function(err) {

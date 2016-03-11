@@ -1,4 +1,5 @@
 // *** main dependencies *** //
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -10,7 +11,7 @@ var pg = require('pg');
 var flash = require('connect-flash');
 var session = require('express-session');
 var Promise = require('bluebird');
-var passport = require('./lib/auth');
+var passport = require('./lib/passport');
 var knex = require('./db/knex');
 var cookieSession = require('cookie-session');
 
@@ -33,17 +34,17 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 // *** config middleware *** //
+app.use(express.static(path.join(__dirname, '../client')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cookieSession({
-  name: 'change_me',
+  name: 'gTables',
   keys: [process.env.KEY1, process.env.KEY2, process.env.KEY3]
 }));
-app.use(express.static(path.join(__dirname, '../client')));
 app.use(session({
-  secret: process.env.SECRET_KEY || 'change_me',
+  secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true
 }));
