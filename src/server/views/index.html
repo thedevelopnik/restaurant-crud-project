@@ -24,7 +24,12 @@
           {% if user.admin === true %}
           <li><a href="/restaurants/new">New Restaurant<span class="sr-only">(current)</span></a></li>
           {% endif %}
+          {% if !user %}
           <li><a href="/login">Login<span class="sr-only">(current)</span></a></li>
+          {% endif %}
+          {% if user %}
+          <li><a href="/logout">Logout<span class="sr-only">(current)</span></a></li>
+          {% endif %}
         </ul>
       </div>
     </div>
