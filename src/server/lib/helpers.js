@@ -10,7 +10,7 @@ module.exports = {
       return next();
     } else {
       // if not -> redirect to login
-      req.flash('error', 'You do not have restaurant editing privileges');
+      req.flash('error', 'You need to login!');
       return res.redirect('/login');
     }
   },
@@ -22,6 +22,7 @@ module.exports = {
       return next();
     } else {
       // if not, redirect to login
+      req.flash('error', 'You are not logged in as an admin.');
       return res.status(403).redirect('/login');
     }
   },

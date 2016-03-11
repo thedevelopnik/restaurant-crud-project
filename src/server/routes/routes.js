@@ -74,24 +74,28 @@ router.post('/restaurants/:id/edit', function(req, res, next) {
 
 //render the new review page for a restaurant
 router.get('/restaurants/:id/reviews/new', function(req, res, next) {
+  helpers.ensureAuthenticated(req, res, next);
   renderNewReview(req, res, next);
 });
 
 
 //add a review to the database when the submit button is clicked on a new review
 router.post('/restaurants/:id/reviews', function(req, res, next) {
+  helpers.ensureAuthenticated(req, res, next);
   addReview(req, res, next, findAvg);
 });
 
 
 // render the edit page for a particular review
 router.get('/restaurants/:id/reviews/:reviewid/edit', function(req, res, next) {
+  helpers.ensureAuthenticated();
   renderEditReview(req, res, next);
 });
 
 
 // update the database when an edited review is submitted
 router.post('/restaurants/:id/reviews/:reviewid', function(req, res, next) {
+  helpers.ensureAuthenticated();
   updateReview(req, res, next, findAvg);
 });
 
