@@ -25,3 +25,5 @@ $('.expand').on('click', function() {
   $(this).hide();
   $(this).next().show();
 });
+
+// Storing facebook SDK here in case I need it later

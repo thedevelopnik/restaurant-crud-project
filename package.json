@@ -19,6 +19,7 @@
     "knex": "^0.10.0",
     "morgan": "~1.7.0",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
     "passport-local": "^1.0.0",
     "pg": "^4.5.1",
     "serve-favicon": "~2.3.0",

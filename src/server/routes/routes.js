@@ -103,4 +103,11 @@ router.get('/logout', function(req, res, next) {
   res.redirect('/');
 });
 
+router.get('/facebook/login', passport.authenticate('facebook', {scope: ['public_profile', 'email']}));
+
+router.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/'}),
+function (req, res, next) {
+  res.redirect('/');
+});
+
 module.exports = router;

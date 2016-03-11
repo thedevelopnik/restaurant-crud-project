@@ -1,5 +1,6 @@
 var passport = require('passport');
-var LocalStrategy = require('passport-local');
+var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var knex = require('../db/knex');
 var helpers = require('./helpers');
 
@@ -21,9 +22,41 @@ passport.use(new LocalStrategy({
   }
 ));
 
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/facebook/callback",
+    profileFields: ['id', 'name', 'email']
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    var id = profile.id;
+    var firstName = profile.name.givenName;
+    var lastName = profile.name.familyName;
+    var email = profile.emails[0].value;
+    knex('users').where('username', id)
+      .then(function (user) {
+        if (user[0] === undefined) {
+          return knex('users').insert({username: id, email: email, first_name: firstName, last_name: lastName, admin: false})
+          .then(function() {
+            return knex('users').select('*').where('username', id)
+            .then(function(user) {
+              return user[0].id;
+            });
+          });
+        }
+        else {
+          return user[0].id;
+        }
+      }).then(function (userID) {
+        console.log(userID);
+        return cb(null, userID);
+      });
+  }
+));
+
 // *** configure passport *** //
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
+passport.serializeUser(function(userID, done) {
+  done(null, userID);
 });
 
 passport.deserializeUser(function(id, done) {
