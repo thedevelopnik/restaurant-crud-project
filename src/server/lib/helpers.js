@@ -10,7 +10,19 @@ module.exports = {
       return next();
     } else {
       // if not -> redirect to login
+      req.flash('error', 'You do not have restaurant editing privileges');
       return res.redirect('/login');
+    }
+  },
+
+  ensureAdmin: function(req, res, next) {
+    // check if user is admin
+    if(req.user.admin === true) {
+      // if so call next()
+      return next();
+    } else {
+      // if not, redirect to login
+      return res.status(403).redirect('/login');
     }
   },
 

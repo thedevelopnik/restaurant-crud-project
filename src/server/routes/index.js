@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
   console.log(req.user);
     queries.allRes()
     .then(function(data) {
-      res.render('index', {restaurants: data, user: req.user, messages: req.flash('success')});
+      res.render('index', {restaurants: data, user: req.user, success: req.flash('success')});
     })
     .catch(function(err) {
       console.log(err);

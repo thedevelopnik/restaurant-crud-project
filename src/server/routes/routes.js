@@ -29,13 +29,14 @@ function findAvg (array) {
 }
 
 
-// render index if there is no parameter, redirect to index if the parameter is 'restaurant'
+// render index if there is no parameter
 router.get('/', function(req, res, next) {
   renderIndex(req, res, next);
 });
 
 // render the new page
 router.get('/restaurants/new', function(req, res, next) {
+  helpers.ensureAdmin(req, res, next);
   renderNewRes(req, res, next);
 });
 
@@ -46,23 +47,27 @@ router.get('/restaurants/:id', function(req, res, next) {
 
 //render a restaurant's edit page if that restaurant's id is in the url with edit
 router.get('/restaurants/:id/edit', function(req, res, next) {
+  helpers.ensureAdmin(req, res, next);
   renderEditRes(req, res, next);
 });
 
 //delete a restaurant
 router.get('/restaurants/:id/delete', function(req, res, next) {
+  helpers.ensureAdmin(req, res, next);
   deleteRes(req, res, next);
 });
 
 
 //add a new restaurant when the submit button is clicked on the new res page
 router.post('/restaurants', function(req, res, next) {
+  helpers.ensureAdmin(req, res, next);
   addRes(req, res, next);
 });
 
 
 //update the database when the submit button is clicked on the edit page
 router.post('/restaurants/:id/edit', function(req, res, next) {
+  helpers.ensureAdmin(req, res, next);
   updateRes(req, res, next);
 });
 

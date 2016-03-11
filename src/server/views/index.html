@@ -21,7 +21,9 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+          {% if user.admin === true %}
           <li><a href="/restaurants/new">New Restaurant<span class="sr-only">(current)</span></a></li>
+          {% endif %}
           <li><a href="/login">Login<span class="sr-only">(current)</span></a></li>
         </ul>
       </div>
