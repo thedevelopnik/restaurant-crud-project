@@ -11,6 +11,7 @@ passport.use(new LocalStrategy({
     knex('users').where('username', username)
       .then(function(data) {
         var user = data[0];
+        helpers.checkPassword(password, user.password);
         if (password === user.password) {
           return done(null, user, {message: 'You\'re logged in!'});
         } else {
