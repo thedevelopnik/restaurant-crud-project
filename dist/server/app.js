@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
 var pg = require('pg');
+if ( !process.env.NODE_ENV ) { require('dotenv').config(); }
 
 
 // *** routes *** //
