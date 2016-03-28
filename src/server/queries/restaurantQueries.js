@@ -35,7 +35,8 @@ module.exports = {
       });
   },
   allRes: function() {
-    console.log(knex('restaurants').select());
-    return knex('restaurants').select();
+    var data = knex('restaurants').select();
+    console.log(data);
+    return data;
   }
 };
