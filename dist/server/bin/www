@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+if ( !process.env.NODE_ENV ) { require('dotenv').config(); }
 var app = require('../app');
 var debug = require('debug')('_example:server');
 var http = require('http');
