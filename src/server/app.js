@@ -1,5 +1,4 @@
 // *** main dependencies *** //
-require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -14,6 +13,7 @@ var Promise = require('bluebird');
 var passport = require('./lib/passport');
 var knex = require('./db/knex');
 var cookieSession = require('cookie-session');
+if ( !process.env.NODE_ENV ) { require('dotenv').config(); }
 
 // *** routes *** //
 var routes = require('./routes/routes.js');
